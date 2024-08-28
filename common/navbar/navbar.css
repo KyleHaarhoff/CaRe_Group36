@@ -1,0 +1,17 @@
+.MainNavbar{
+    width:100%;
+    background-color: #333333;
+    margin:0;
+    height:4rem;
+    color:white;
+}
+
+header{
+    padding:0;
+    margin:0;
+}
+
+body{
+    padding:0;
+    margin:0;
+}
