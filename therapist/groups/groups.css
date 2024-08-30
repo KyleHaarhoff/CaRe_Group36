@@ -1,0 +1,56 @@
+
+
+.groupComponentContainer{
+    position: absolute;
+    background-color: white;
+    width: 94%;
+    height:35rem;
+    top: 50%;
+    margin-top: -15.5rem;
+    left:3%;
+    overflow-y: scroll;
+}
+.listControlContainer{
+    padding: 1rem;
+
+}
+.listControls{
+    position: absolute;
+    right:2rem;
+}
+.groupContainer{
+    margin-top: 1rem;
+    border-top:0.1px solid #bababa;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+.groupTitle{
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.dropdownIcon{
+    max-height: 2rem;
+    float:right;
+}
+.vInvert{
+    transform: rotate(180deg);
+}
+.patientList{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.patientList span{
+    border-bottom: 1px solid #d4d4d4;
+    margin :0.5rem 0;
+    padding: 0.2rem;;
+}
+.groupButtons {
+    text-align: right;
+    padding-right: 2rem;
+}
+.groupButtons .careButton{
+    
+    font-size: 1.1rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
