@@ -1,5 +1,4 @@
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
@@ -18,6 +17,7 @@ body {
 }
 
 .patient_list_header {
+    margin: 0;
     padding: 20px;
     display: flex;
     justify-content: space-between;

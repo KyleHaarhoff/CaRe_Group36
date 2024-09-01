@@ -19,16 +19,17 @@
                 <p class="loginTitle">Please log in</p>
                 <label>
                     <div class="loginFormItem">Email</div>
-                    <input type="text" placeholder="Enter your email..." name="email" class="loginFormItem loginInput" autocomplete="email">
+                    <input required type="text" placeholder="Enter your email..." name="email" class="loginFormItem loginInput" autocomplete="email">
                 </label>
                 <label>
                     <div class="loginFormItem">Password</div>
-                    <input type="password" placeholder="Enter your password..." name="password" class="loginFormItem loginInput" autocomplete="off">
+                    <input required type="password" placeholder="Enter your password..." name="password" class="loginFormItem loginInput" autocomplete="off">
                 </label>
                 <input type="submit" value="Login" class="careButton" id="loginButton" >
             </form>
         </div>
     </main>
+    <?php include "common/notification/notification.php"; ?> 
 </body>
 <script src="login.js"></script>
 </html>

@@ -1,0 +1,30 @@
+#confirmationContainer{
+    position:fixed;
+    height: 20vh;
+    width: 30vw;
+
+    left:50%;
+    margin-left:-15vw;
+
+    top:50%;
+    margin-top: -10vh;
+
+    background-color: white;
+    display: none;
+}
+#confirmationTitle{
+    padding: 0.4rem;
+    text-align: center;
+    font-size: 1.4rem;
+    height: 4rem
+}
+
+.confirmationButtons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.confirmationButtons .careButton{
+    margin: 1rem auto;
+    font-size: 1.2rem;
+} 
