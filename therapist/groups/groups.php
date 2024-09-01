@@ -18,9 +18,9 @@
     <main>
         <div class="groupComponentContainer shadow rounded">
             <div class="listControlContainer">
-                <button class="careButton">Add Group</button>
+                <button class="careButton"  onclick="openGroupManager()">Add Group</button>
                 <span class="listControls">
-                    <span class="groupFilterContainer">Filter</span>
+                    <span class="groupFilterContainer"><button class="otherButton">Filter</button></span>
                     <input type="text" placeholder="Search.." class="careSearch">
                 </span>
             </div>
@@ -42,8 +42,8 @@
                                 <span>Jack Ross Again</span>  
                             </div>
                             <div class="groupButtons">
-                                <button class="careButton">Manage Group</button>
-                                <button class="careButton">Delete Group</button>
+                                <button class="otherButton">Manage Group</button>
+                                <button class="otherButton">Delete Group</button>
                             </div>
                         </div>
                 </div>
@@ -64,8 +64,8 @@
                                 <span>Jack Ross Again</span>  
                             </div>
                             <div class="groupButtons">
-                                <button class="careButton">Manage Group</button>
-                                <button class="careButton">Delete Group</button>
+                                <button class="otherButton">Manage Group</button>
+                                <button class="otherButton">Delete Group</button>
                             </div>
                         </div>
                 </div>
@@ -86,46 +86,60 @@
                                 <span>Jack Ross Again</span>  
                             </div>
                             <div class="groupButtons">
-                                <button class="careButton">Manage Group</button>
-                                <button class="careButton">Delete Group</button>
+                                <button class="otherButton">Manage Group</button>
+                                <button class="otherButton">Delete Group</button>
                             </div>
                         </div>
                 </div>
             </div>
         </div>
 
-        <div class="cover">
+        <div id="managerCover">
             <div class="groupManagementContainer shadow rounded">
                 <div class="managementTitleContainer">
-                    <input type="text">
-                    <button>Close</button>
+                    <input type="text" class="groupTitleInput" placeholder="Enter the group name...">
+                    <div class="rightContentContainer">
+                        <button onclick="closeGroupManager()" class="closeManagerButton"><img src="<?= $base_url ?>assets/images/close.svg"></button>
+                    </div>
                 </div>
                 <div class="groupManagementContent">   
                     <div class="groupPatientsContainer rounded">
                         <div class = "groupPatientsControls">
-                            <input type="text">
+                            <button class="otherButton">Filter</button>
+                            <input type="text" class="patientSearch">
                         </div>
                         <div class="groupPatientList">
-                            <span>Jack Ross</span> 
+                            <span onclick="toggleSelected(this)">Jack Ross</span> 
                         </div>
                     </div>
                     <div class="movePatientButtonsContainer">
-                        <button>Right</button>
-                        <button>Left</button>
+                        <button class="rightArrow"><img src="<?= $base_url ?>assets/images/arrow.svg"></button>
+                        <button  class="leftArrow"><img src="<?= $base_url ?>assets/images/arrow.svg"></button>
                     </div>
                     <div class="allPatientsContainer rounded">
                         <div class = "allPatientsControls">
-                            <input type="text">
+                            <button class="otherButton">Filter</button>
+                            <input type="text"  class="patientSearch">
                         </div> 
                         <div class="allPatientList">
-                            <span>Jack Ross</span>  
-                            <span>Ross Man</span>  
+                            <span onclick="toggleSelected(this)">Jack Ross</span>  
+                            <span onclick="toggleSelected(this)">Ross Man</span>  
                         </div>
+                    </div>
+                    <div class="rightContentContainer countContainer">Count 1</div>
+                    <div></div>
+                    <div class="rightContentContainer countContainer">Count 2</div>
+                    <div></div>
+                    <div></div>
+                    <div class="rightContentContainer">
+                        <button  class="careButton" onclick="confirmSave()">Save</button>
                     </div>
                 </div>
             </div>  
         </div>
     </main>
+    <?php include "../../common/confirmation/confirmation.php"; ?> 
+    <?php include "../../common/notification/notification.php"; ?> 
     <script src="<?= $base_url ?>/therapist/groups/groups.js"></script>
 </body>
 </html>

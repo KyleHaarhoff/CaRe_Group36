@@ -1,3 +1,5 @@
+groupManagerCover = document.getElementById("managerCover")
+
 
 //function to toggle visibility of group content
 function toggleDropdown(icon, contentID){
@@ -12,4 +14,37 @@ function toggleDropdown(icon, contentID){
         icon.classList.add("vInvert")
         contentList.style.display = 'block';
     }
+}
+
+function openGroupManager(group = null){
+    if(group == null){
+        //we are adding a group
+    }
+    else{
+        //we are editing an existing group
+    }
+    //make it visible
+    groupManagerCover.style.display = "block"
+}
+function toggleSelected(div){
+    
+
+    if(div.classList.contains("selected")){
+        div.classList.remove("selected")
+    }
+    else{
+        div.classList.add("selected")
+    }
+}
+function closeGroupManager(){
+    groupManagerCover.style.display = "none"
+}
+
+function confirmSave(){
+    openConfirmation("Are you sure you want to save?", showNotification, ()=>{})
+}
+
+function showNotification(){
+    closeGroupManager()
+    openNotification("Saved!", 3000)
 }

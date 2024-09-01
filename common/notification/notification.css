@@ -1,0 +1,17 @@
+#notificationContainer{
+    position: fixed;
+    width: 100%;
+    bottom: 5vh;
+    display: none;
+    justify-content: center;
+}
+
+#notificationText{
+    border-radius: 4px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    width: fit-content;
+    background-color: white;
+    border: 1px solid black;
+    
+}

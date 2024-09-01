@@ -8,8 +8,9 @@ if(email.includes("patient")){
 }
 else if (email.includes("therapist")){
 
-    window.location.href = "therapist/home/home.php";
+    window.location.href = "therapist/home_page/index.php";
 }
 else{
     //show incorrect login
+    openNotification("Incorrect Login Information!", 3000, "0 0 10px rgba(160,0 , 0, 0.8)")
 }
