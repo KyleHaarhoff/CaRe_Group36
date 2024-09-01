@@ -1,7 +1,10 @@
 # Git Commands
 <h2>Copy the repo into a folder</h2>
 <p>git clone https://github.com/KyleHaarhoff/CaRe_Group36.git</p>
+<h2>add the repo as the upstream origin</h2>
+<p>git remote add upstream https://github.com/KyleHaarhoff/CaRe_Group36.git</p>
 <h2>Get code from the repo</h2>
+<p>git fetch upstream</p>
 <p>git pull</p>
 <h2>push code to the repo</h2>
 <p>git add . </p>
