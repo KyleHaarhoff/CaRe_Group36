@@ -21,9 +21,8 @@
         if (str_contains($_SERVER['REQUEST_URI'], "therapist"))
         {
         ?>
-            <a href= "<?= $base_url ?>patient/therapist/home.php"><p>Home</p></a>
-            <a><p>Journal</p></a>
-            <a><p>History</p></a>
+            <a href= "<?= $base_url ?>/therapist/home/home.php"><p>Home</p></a>
+            <a href= "<?= $base_url ?>/therapist/groups/groups.php"><p>Groups</p></a>
         <?php
         }
     ?>

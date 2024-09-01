@@ -1,0 +1,116 @@
+
+
+.groupComponentContainer{
+    position: absolute;
+    background-color: white;
+    width: 94%;
+    height:35rem;
+    top: 50%;
+    margin-top: -15.5rem;
+    left:3%;
+}
+.groupListContainer{
+    overflow-y: scroll;
+    height:30rem;
+}
+.groupListContainer::-webkit-scrollbar{
+    width:0.4vw;
+}
+
+.groupListContainer::-webkit-scrollbar-thumb{
+    background-color: #333;
+    border-radius: 10px;
+}
+.groupListContainer::-webkit-scrollbar-track{
+    border-radius: 10px;
+    margin-block: 1rem;
+}
+
+
+.listControlContainer{
+    padding: 1rem;
+
+}
+.listControls{
+    position: absolute;
+    right:2rem;
+}
+.groupContainer{
+    margin-top: 1rem;
+    border-top:0.1px solid #bababa;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+.groupTitle{
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.dropdownIcon{
+    max-height: 2rem;
+    float:right;
+}
+.vInvert{
+    transform: rotate(180deg);
+}
+.patientList{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.patientList span{
+    border-bottom: 1px solid #d4d4d4;
+    margin :0.5rem 0;
+    padding: 0.2rem;;
+}
+.groupButtons {
+    text-align: right;
+    padding-right: 2rem;
+}
+.groupButtons .careButton{
+    
+    font-size: 1.1rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.dropdownContent{
+    display: none;
+}
+
+
+.cover{
+    background-color: rgb(73, 73, 73, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.groupManagementContainer{
+    position: absolute;
+    background-color: white;
+    width: 60vw;
+    left:50%;
+    margin-left: -30vw;
+    height: 80vh;
+    margin-top: 5vh;
+}
+
+.groupManagementContent{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    height: 80%;
+    top:10%;
+    width: 90%;
+    left: 5%;
+}
+.groupPatientsContainer{
+    border: 1px solid #333;
+    width: 100%;
+    height: 100%;
+}
+.allPatientsContainer{
+    border: 1px solid #333;
+    width: 100%;
+    height: 100%;
+
+}
