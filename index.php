@@ -12,12 +12,23 @@
 </head>
 <body>
     <header>
-        <?php
-            include "common/navbar/navbar.php"
-        ?>
     </header>
     <main>
-        <p>This is a placeholder for actual content</p>
+        <div class="loginDiv rounded shadow">
+            <form id="loginForm" method="get" action="index.php">
+                <p class="loginTitle">Please log in</p>
+                <label>
+                    <div class="loginFormItem">Email</div>
+                    <input type="text" placeholder="Enter your email..." name="email" class="loginFormItem loginInput" autocomplete="email">
+                </label>
+                <label>
+                    <div class="loginFormItem">Password</div>
+                    <input type="password" placeholder="Enter your password..." name="password" class="loginFormItem loginInput" autocomplete="off">
+                </label>
+                <input type="submit" value="Login" class="careButton" id="loginButton" >
+            </form>
+        </div>
     </main>
 </body>
+<script src="login.js"></script>
 </html>
