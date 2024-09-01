@@ -4,8 +4,8 @@
 <h2>add the repo as the upstream origin</h2>
 <p>git remote add upstream https://github.com/KyleHaarhoff/CaRe_Group36.git</p>
 <h2>Get code from the repo</h2>
-<p>git fetch upstream</p>
-<p>git pull</p>
+<p>git fetch upstream develop:upstream-develop</p>
+<p>git merge upstream-develop</p>
 <h2>push code to the repo</h2>
 <p>git add . </p>
 <p>git commit -m ""
