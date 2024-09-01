@@ -3,7 +3,6 @@
     background-color: #333333;
     margin:0;
     height:5rem;
-    color:white;
     display: flex;
 }
 
@@ -14,6 +13,7 @@
     width: fit-content;
     padding: 0 2rem;
     text-decoration: none;
+    color:white;
     
 
 }
