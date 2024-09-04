@@ -35,7 +35,7 @@
                         <div class="dropdownContent" id="group1ContentList">
                             <div class="patientList">
                                 <span>Jack Ross</span>  
-                                <span>Ross Man</span>  
+                                <span>Ross Mars</span>  
                                 <span>Frederick</span>  
                                 <span>Somebody</span>  
                                 <span>Another Body</span>  
@@ -57,7 +57,7 @@
                         <div class="dropdownContent" id="group2ContentList">
                             <div class="patientList">
                                 <span>Jack Ross</span>  
-                                <span>Ross Man</span>  
+                                <span>Ross Mars</span>  
                                 <span>Frederick</span>  
                                 <span>Somebody</span>  
                                 <span>Another Body</span>  
@@ -79,7 +79,7 @@
                         <div class="dropdownContent" id="group3ContentList">
                             <div class="patientList">
                                 <span>Jack Ross</span>  
-                                <span>Ross Man</span>  
+                                <span>Ross Mars</span>  
                                 <span>Frederick</span>  
                                 <span>Somebody</span>  
                                 <span>Another Body</span>  
@@ -123,7 +123,7 @@
                         </div> 
                         <div class="allPatientList">
                             <span onclick="toggleSelected(this)">Jack Ross</span>  
-                            <span onclick="toggleSelected(this)">Ross Man</span>  
+                            <span onclick="toggleSelected(this)">Ross Mars</span>  
                         </div>
                     </div>
                     <div class="rightContentContainer countContainer">Count 1</div>
