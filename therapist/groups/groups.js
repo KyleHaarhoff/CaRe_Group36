@@ -36,7 +36,7 @@ function toggleSelected(div){
         div.classList.add("selected")
     }
 }
-function closeGroupManager(){
+function closeGroupManager(groupDiv = null){
     groupManagerCover.style.display = "none"
 }
 
@@ -47,4 +47,15 @@ function confirmSave(){
 function showNotification(){
     closeGroupManager()
     openNotification("Saved!", 3000)
+}
+
+
+function deleteGroup(id){
+    openConfirmation("Are you sure you want to save?", ()=>{
+        groupDiv = document.getElementById(id)
+        groupDiv.style.display = "none"
+        openNotification("Successfully deleted "+id+"!", 3000)
+    }, ()=>{})
+    
+    
 }

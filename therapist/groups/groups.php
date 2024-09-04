@@ -25,7 +25,7 @@
                 </span>
             </div>
             <div class="groupListContainer">
-                <div class="groupContainer" data-groupID="">
+                <div class="groupContainer" id="Group1">
                     <div class="groupControl">
                         <span class="groupTitle">Group 1</span>
                         <span>
@@ -42,12 +42,12 @@
                                 <span>Jack Ross Again</span>  
                             </div>
                             <div class="groupButtons">
-                                <button class="otherButton">Manage Group</button>
-                                <button class="otherButton">Delete Group</button>
+                                <button class="otherButton" onclick="openGroupManager(this)">Manage Group</button>
+                                <button class="otherButton" onclick="deleteGroup('Group1')">Delete Group</button>
                             </div>
                         </div>
                 </div>
-                <div class="groupContainer" data-groupID="">
+                <div class="groupContainer" id="Group2">
                     <div class="groupControl">
                         <span class="groupTitle">Group 2</span>
                         <span>
@@ -64,12 +64,12 @@
                                 <span>Jack Ross Again</span>  
                             </div>
                             <div class="groupButtons">
-                                <button class="otherButton">Manage Group</button>
-                                <button class="otherButton">Delete Group</button>
+                                <button class="otherButton"  onclick="openGroupManager()">Manage Group</button>
+                                <button class="otherButton" onclick="deleteGroup('Group2')">Delete Group</button>
                             </div>
                         </div>
                 </div>
-                <div class="groupContainer" data-groupID="">
+                <div class="groupContainer" id="Group3">
                     <div class="groupControl">
                         <span class="groupTitle">Group 3</span>
                         <span>
@@ -86,8 +86,8 @@
                                 <span>Jack Ross Again</span>  
                             </div>
                             <div class="groupButtons">
-                                <button class="otherButton">Manage Group</button>
-                                <button class="otherButton">Delete Group</button>
+                                <button class="otherButton"  onclick="openGroupManager()">Manage Group</button>
+                                <button class="otherButton" onclick="deleteGroup('Group3')">Delete Group</button>
                             </div>
                         </div>
                 </div>
