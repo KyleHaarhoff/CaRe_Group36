@@ -1,4 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+}
+
+/* Affirmation section */
 .affirmation {
+    grid-column: span 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,16 +32,111 @@
 
 .affirmation h2 {
     margin: 0;
+    font-size: 1.5em;
 }
 
+#edit-affirmation {
+    padding: 10px;
+    background-color: #080808;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Weekly Goals section */
 .weekly-goals {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .weekly-goals h3 {
     margin-top: 0;
+    font-size: 1.2em;
+}
+
+.weekly-goals ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.weekly-goals li {
+    margin-bottom: 10px;
+}
+
+#edit-goals {
+    padding: 10px;
+    background-color: #080808;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#edit-goals:hover {
+    background-color: #0056b3;
+}
+
+/* Journal section */
+.journal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.journal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#start-writing {
+    padding: 10px;
+    background-color: #080808;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.journal-list .journal-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.entry-date {
+    flex-basis: 20%;
+}
+
+.entry-content {
+    flex-basis: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.entry-status {
+    flex-basis: 20%;
+    text-align: right;
+}
+
+#view-history {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #080808;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
