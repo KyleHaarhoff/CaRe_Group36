@@ -11,22 +11,26 @@ include_once __DIR__ . "/../../conf.php"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../../../CaRe_Group36/style.css">
 
 </head>
 
 <body>
-    <header>
-        <?php
-        include "../../common/navbar/navbar.php"
-        ?>
-    </header>
+    <!-- <header>
+        <?php include "../../common/navbar/navbar.php" ?>
+    </header> -->
+
     <main>
         <div class="container">
+            <!-- Affirmation Section -->
             <section class="affirmation">
-                <h2>"This is a daily affirmation for the patient"</h2>
-                <button id="edit-affirmation" onclick="editAffirmation()">Edit</button>
+                <h2 id="affirmation">This is a daily affirmation for the patient</h2>
+                <button class="careButton" id="editButton">
+                    <img id="editImage" src="../images/edit.png" alt="Edit">
+                </button>
             </section>
 
+            <!-- Weekly Goals Section -->
             <section class="weekly-goals">
                 <h3>Weekly Goals</h3>
                 <ul>
@@ -34,23 +38,25 @@ include_once __DIR__ . "/../../conf.php"
                     <li>Here is another goal</li>
                     <li>One more</li>
                 </ul>
-                <button id="edit-goals">Edit Goals</button>
+                <button class="careButton">Edit Goals</button>
             </section>
 
+            <!-- Journal Section -->
             <section class="journal">
                 <div class="journal-header">
-
-                    <input type="date" id="journal-date" name="journal-date" min="2023-01-01" max="2023-12-31" value="2023-08-27">
+                    <!-- Add Icons for Date and Status -->
+                    <input type="date" id="journal-date" name="journal-date" value="2024-08-09">
                     <select id="affirmation-options" name="affirmation-options">
-                        <option value="sad">Sad</option>
-                        <option value="happy">Happy</option>
-                        <option value="angry">Angry</option>
+                        <option value="sad">&#128532 Sad</option>
+                        <option value="happy">&#128512 Happy</option>
+                        <option value="angry">&#128545 Angry</option>
                     </select>
-                    <button id="start-writing">Start Writing!</button>
+                    <button class="careButton">Start Writing!</button>
                 </div>
 
+                <!-- Journal Entry Table -->
                 <div class="journal-list">
-                    <table border="1">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Date</th>
@@ -62,34 +68,27 @@ include_once __DIR__ . "/../../conf.php"
                             <tr>
                                 <td>08/08/2024</td>
                                 <td>This is the start of a journal entry. It will cut off after...</td>
-                                <td>Sad</td>
+                                <td>&#128512</td>
                             </tr>
                             <tr>
                                 <td>07/08/2024</td>
                                 <td>This is the start of a journal entry. It will cut off after...</td>
-                                <td>Happy</td>
+                                <td>&#128512</td>
                             </tr>
                             <tr>
                                 <td>06/08/2024</td>
                                 <td>This is the start of a journal entry. It will cut off after...</td>
-                                <td>Happy</td>
+                                <td>&#128512</td>
                             </tr>
-                            <tr>
-                                <td>05/08/2024</td>
-                                <td>This is the start of a journal entry. It will cut off after...</td>
-                                <td>Happy</td>
-                            </tr>
-
                         </tbody>
                     </table>
-
                 </div>
-
-                <button id="view-history">View Full History</button>
+                <button class="viewHistory">View Full History</button>
             </section>
         </div>
     </main>
+    <script src="home.js"></script>
 </body>
-<script src="home.js"></script>
+
 
 </html>

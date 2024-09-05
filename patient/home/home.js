@@ -1,15 +1,33 @@
-document.getElementById('start-writing').addEventListener('click', () => {
-    alert('Start writing your journal entry');
-});
 
-document.getElementById('edit-goals').addEventListener('click', () => {
-    alert('Edit your weekly goals');
-});
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("click")
+    const affirmation = document.getElementById('affirmation');
+    const editButton = document.getElementById('editButton');
+    console.log("affirmation editButton 1",affirmation,editButton)
+    if (affirmation && editButton) {
+        console.log("affirmation editButton",affirmation,editButton)
+        editButton.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = affirmation.textContent;
 
-function editAffirmation() {
-    console.log("Edit Affirmation")
-    let affirmation = prompt("Edit the daily affirmation:");
-    if (affirmation) {
-        document.querySelector('.affirmation h2').textContent = `"${affirmation}"`;
+            // Replace h2 text with input field
+            affirmation.innerHTML = '';
+            affirmation.appendChild(input);
+            input.focus();
+            input.addEventListener('blur', saveChanges);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    saveChanges();
+                }
+            });
+
+            function saveChanges() {
+                affirmation.textContent = input.value;
+                input.removeEventListener('blur', saveChanges);
+                input.removeEventListener('keydown', saveChanges);
+
+            }
+        });
     }
-}
+});
