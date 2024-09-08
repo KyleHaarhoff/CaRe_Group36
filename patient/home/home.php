@@ -16,9 +16,9 @@ include_once __DIR__ . "/../../conf.php"
 </head>
 
 <body>
-    <!-- <header>
+    <header>
         <?php include "../../common/navbar/navbar.php" ?>
-    </header> -->
+    </header> 
 
     <main>
         <div class="container">
