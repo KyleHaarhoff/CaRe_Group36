@@ -1,0 +1,58 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    padding: 30px;
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    
+}
+
+
+
+
+.profile-img {
+    position: cent;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.main-content {
+    flex: 3;
+    padding: 20px;
+}
+
+.patient-details, .therapist-notes {
+    background-color: #c4bfbf;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
