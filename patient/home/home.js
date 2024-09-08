@@ -1,8 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log("click")
-    const affirmation = document.getElementById('affirmation');
-    const editButton = document.getElementById('editButton');
     console.log("affirmation editButton 1",affirmation,editButton)
     if (affirmation && editButton) {
         console.log("affirmation editButton",affirmation,editButton)
