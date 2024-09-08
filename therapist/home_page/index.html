@@ -18,7 +18,7 @@
             <h2>Patient List</h2>
             <div class="controls">
                 <button class="filter-btn">Filter</button>
-                <input type="text" placeholder="Search..." class="search-box">
+                <input type="search" placeholder="Search..." class="search-box" id="inp" onkeyup="myFunction()">
             </div>
         </div>
 
@@ -27,6 +27,7 @@
                 <tr>
                     <th>Patient Name</th>
                     <th>Journal Status</th>
+                    <th>Requires Follow-up</th>
                     <th class="last_column">Created On</th>
                 </tr>
             </thead>
@@ -34,26 +35,36 @@
                 <tr>
                     <td>Jack Ross</td>
                     <td class="status_unread">Unread</td>
+                    <td>No</td>
+
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
                     <td>David Jones</td>
                     <td class="status_uptodate">Up to date</td>
+                    <td>Yes</td>
+
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
                     <td>Mike Leo</td>
                     <td class="status_unread">Unread</td>
+                    <td>Yes</td>
+
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
                     <td>Josh Chen</td>
                     <td class="status_uptodate">Up to date</td>
+                    <td>No</td>
+
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
                     <td>Jack Ross</td>
                     <td class="status_unread">Unread</td>
+                    <td>Yes</td>
+
                     <td>02/08/2024</td>
                 </tr>
             </tbody>
