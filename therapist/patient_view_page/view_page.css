@@ -1,0 +1,70 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    display: flex;
+    padding: 20px;
+    height: calc(100vh);
+}
+
+
+
+
+.profile {
+    text-align: center;
+    width: 100%; /* Full width to match the parent */
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px; /* To maintain aspect ratio */
+    border-radius: 60px; /* Circular image */
+    margin-bottom: 20px; /* Space between image and name */
+}
+.journal-entry{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%; /* Full width for better alignment */
+    text-align: center;
+    width: 100%; /* Makes the table use the full width of its container */
+    margin-bottom: 20px; /* Space below the table */
+    margin-top: auto;
+}
+
+
+.main-content {
+    flex: 3;
+    background-color: #d4d0d0;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.patient-details, .therapist-notes {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%; /* Full width of the container */
+    height: 100px; /* Fixed height */
+}
+
+button {
+    padding: 10px 20px; /* Padding around the text */
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
