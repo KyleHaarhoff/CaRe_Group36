@@ -23,7 +23,7 @@ include_once __DIR__ . "/../../conf.php"
 
     <?php
     }
-    if (str_contains($_SERVER['REQUEST_URI'], "therapist")) {
+    else if (str_contains($_SERVER['REQUEST_URI'], "therapist")) {
     ?>
         <a href="<?= $base_url ?>/therapist/home_page/index.php">
             <p>Home</p>
