@@ -21,11 +21,11 @@
                 <button class="careButton"  onclick="openGroupManager()">Add Group</button>
                 <span class="listControls">
                     <span class="groupFilterContainer"><button class="otherButton">Filter</button></span>
-                    <input type="text" placeholder="Search.." class="careSearch">
+                    <input type="text" placeholder="Search.." class="careSearch" onchange="searchGroups(this)">
                 </span>
             </div>
             <div class="groupListContainer">
-                <div class="groupContainer" data-groupID="">
+                <div class="groupContainer" id="Group1">
                     <div class="groupControl">
                         <span class="groupTitle">Group 1</span>
                         <span>
@@ -34,20 +34,18 @@
                     </div>
                         <div class="dropdownContent" id="group1ContentList">
                             <div class="patientList">
-                                <span>Jack Ross</span>  
-                                <span>Ross Man</span>  
-                                <span>Frederick</span>  
-                                <span>Somebody</span>  
-                                <span>Another Body</span>  
-                                <span>Jack Ross Again</span>  
+                                <span data-id="1">Jack Ross</span>  
+                                <span data-id="2">Ross Mars</span>  
+                                <span data-id="3">Frederick</span>  
+                                <span data-id="4">Somebody</span>  
                             </div>
                             <div class="groupButtons">
-                                <button class="otherButton">Manage Group</button>
-                                <button class="otherButton">Delete Group</button>
+                                <button class="otherButton" onclick="openGroupManager('Group1')">Manage Group</button>
+                                <button class="otherButton" onclick="deleteGroup('Group1')">Delete Group</button>
                             </div>
                         </div>
                 </div>
-                <div class="groupContainer" data-groupID="">
+                <div class="groupContainer" id="Group2">
                     <div class="groupControl">
                         <span class="groupTitle">Group 2</span>
                         <span>
@@ -56,20 +54,17 @@
                     </div>
                         <div class="dropdownContent" id="group2ContentList">
                             <div class="patientList">
-                                <span>Jack Ross</span>  
-                                <span>Ross Man</span>  
-                                <span>Frederick</span>  
-                                <span>Somebody</span>  
-                                <span>Another Body</span>  
-                                <span>Jack Ross Again</span>  
+                                <span data-id="4">Somebody</span>  
+                                <span data-id="5">Another Body</span>  
+                                <span data-id="6">Jack Ross Again</span> 
                             </div>
                             <div class="groupButtons">
-                                <button class="otherButton">Manage Group</button>
-                                <button class="otherButton">Delete Group</button>
+                                <button class="otherButton"  onclick="openGroupManager('Group2')">Manage Group</button>
+                                <button class="otherButton" onclick="deleteGroup('Group2')">Delete Group</button>
                             </div>
                         </div>
                 </div>
-                <div class="groupContainer" data-groupID="">
+                <div class="groupContainer" id="Group3">
                     <div class="groupControl">
                         <span class="groupTitle">Group 3</span>
                         <span>
@@ -78,16 +73,13 @@
                     </div>
                         <div class="dropdownContent" id="group3ContentList">
                             <div class="patientList">
-                                <span>Jack Ross</span>  
-                                <span>Ross Man</span>  
-                                <span>Frederick</span>  
-                                <span>Somebody</span>  
-                                <span>Another Body</span>  
-                                <span>Jack Ross Again</span>  
+                                <span data-id="1">Jack Ross</span>  
+                                <span data-id="2">Ross Mars</span>  
+                                <span data-id="6">Jack Ross Again</span>
                             </div>
                             <div class="groupButtons">
-                                <button class="otherButton">Manage Group</button>
-                                <button class="otherButton">Delete Group</button>
+                                <button class="otherButton"  onclick="openGroupManager('Group3')">Manage Group</button>
+                                <button class="otherButton" onclick="deleteGroup('Group3')">Delete Group</button>
                             </div>
                         </div>
                 </div>
@@ -97,7 +89,7 @@
         <div id="managerCover">
             <div class="groupManagementContainer shadow rounded">
                 <div class="managementTitleContainer">
-                    <input type="text" class="groupTitleInput" placeholder="Enter the group name...">
+                    <input type="text" id="groupTitleInput" placeholder="Enter the group name...">
                     <div class="rightContentContainer">
                         <button onclick="closeGroupManager()" class="closeManagerButton"><img src="<?= $base_url ?>assets/images/close.svg"></button>
                     </div>
@@ -105,30 +97,31 @@
                 <div class="groupManagementContent">   
                     <div class="groupPatientsContainer rounded">
                         <div class = "groupPatientsControls">
-                            <button class="otherButton">Filter</button>
-                            <input type="text" class="patientSearch">
+                            <input type="text" class="patientSearch" placeholder="Search group patients..." onchange="searchGroupPatients(this)">
                         </div>
-                        <div class="groupPatientList">
-                            <span onclick="toggleSelected(this)">Jack Ross</span> 
+                        <div id="groupPatientList">
                         </div>
                     </div>
                     <div class="movePatientButtonsContainer">
-                        <button class="rightArrow"><img src="<?= $base_url ?>assets/images/arrow.svg"></button>
-                        <button  class="leftArrow"><img src="<?= $base_url ?>assets/images/arrow.svg"></button>
+                        <button class="rightArrow" onclick="movePatientsRight()"><img src="<?= $base_url ?>assets/images/arrow.svg"></button>
+                        <button  class="leftArrow" onclick="movePatientsLeft()"><img src="<?= $base_url ?>assets/images/arrow.svg"></button>
                     </div>
                     <div class="allPatientsContainer rounded">
                         <div class = "allPatientsControls">
-                            <button class="otherButton">Filter</button>
-                            <input type="text"  class="patientSearch">
+                            <input type="text"  class="patientSearch" placeholder="Search all patients..." onchange="searchAllPatients(this)">
                         </div> 
-                        <div class="allPatientList">
-                            <span onclick="toggleSelected(this)">Jack Ross</span>  
-                            <span onclick="toggleSelected(this)">Ross Man</span>  
+                        <div id="allPatientList">
+                            <span data-id="1" onclick="toggleSelected(this)">Jack Ross</span>  
+                            <span data-id="2" onclick="toggleSelected(this)">Ross Mars</span>  
+                            <span data-id="3" onclick="toggleSelected(this)">Frederick</span>  
+                            <span data-id="4" onclick="toggleSelected(this)">Somebody</span>  
+                            <span data-id="5" onclick="toggleSelected(this)">Another Body</span>  
+                            <span data-id="6" onclick="toggleSelected(this)">Jack Ross Again</span>
                         </div>
                     </div>
-                    <div class="rightContentContainer countContainer">Count 1</div>
+                    <div class="rightContentContainer countContainer" id="groupCount">Count: 1</div>
                     <div></div>
-                    <div class="rightContentContainer countContainer">Count 2</div>
+                    <div class="rightContentContainer countContainer" id="allCount">Count: 2</div>
                     <div></div>
                     <div></div>
                     <div class="rightContentContainer">

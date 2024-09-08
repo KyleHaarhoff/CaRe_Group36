@@ -19,27 +19,22 @@ include_once __DIR__ . "/../../conf.php"
 
 <body>
     
-     <!-- <php include ("navbar.php"); ?> -->
-
+    
      <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Patient</a></li>
-                <li><a href="#">Groups</a></li>
-            </ul>
-            <div class="profile">
-                <img src="../../assets/images/profile.avif" alt="Profile Picture" class="profile-img">
-                <h1>Ben White</h1>
-            </div>
-        </nav>
+     <?php include "../../common/navbar/navbar.php"; ?>
+
     </header>
 
     <main>
         <div class="container">
-           
-
-          
+           <div class="side-menu"></div>
+        <div class="profile">
+                <img src="../../assets/images/profile.avif" alt="Profile Picture" class="profile-img">
+               
+               
+                <h1>Ben White</h1>
+            
+                </div>
             <!-- Journal Section -->
             <section class="journal-entry">
                 
@@ -74,6 +69,7 @@ include_once __DIR__ . "/../../conf.php"
                     </table>
                 </div>
                 <button class="viewHistory">View Full History</button>
+
             </section>
             <div class="main-content">
             <div class="patient-details">
@@ -87,7 +83,11 @@ include_once __DIR__ . "/../../conf.php"
         <div class="therapist-notes">
             <h2>Therapist Notes</h2>
             <textarea>Ben is experiencing heightened work-related stress...</textarea>
-            <button>Edit Notes</button>
+            <button>Edit Notes</button><br>
+
+            <label>Requires Follow Up</label>
+            <input type="checkbox" name="followup" >
+            
         
         </div>
         </div>
