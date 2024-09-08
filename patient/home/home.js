@@ -5,27 +5,24 @@ document.addEventListener('DOMContentLoaded', function () {
     if (affirmation && editButton) {
         console.log("affirmation editButton",affirmation,editButton)
         editButton.addEventListener('click', () => {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = affirmation.textContent;
 
-            // Replace h2 text with input field
-            affirmation.innerHTML = '';
-            affirmation.appendChild(input);
-            input.focus();
-            input.addEventListener('blur', saveChanges);
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    saveChanges();
-                }
-            });
 
-            function saveChanges() {
-                affirmation.textContent = input.value;
-                input.removeEventListener('blur', saveChanges);
-                input.removeEventListener('keydown', saveChanges);
-
-            }
+            const affirmationHeader = document.getElementById("affirmation");
+            affirmationHeader.contentEditable = true;
+            affirmationHeader.focus();
         });
     }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.careButton-patientHome');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            const targetUrl = this.getAttribute('data-target');
+            if (targetUrl) {
+                window.location.href = targetUrl;
+            }
+        });
+    });
 });
