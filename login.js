@@ -12,5 +12,5 @@ else if (email.includes("therapist")){
 }
 else{
     //show incorrect login
-    openNotification("Incorrect Login Information!", 3000, "0 0 10px rgba(160,0 , 0, 0.8)")
+    openNotification("Use therapist or patient as the email to go to the respective landing page", 8000, "0 0 10px rgba(160,0 , 0, 0.8)")
 }
