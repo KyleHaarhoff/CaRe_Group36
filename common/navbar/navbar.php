@@ -9,6 +9,8 @@ include_once __DIR__ . "/../../conf.php"
     //cuurently displaying content based on url
     //will change to access control in further phases
 
+    
+
     if (str_contains($_SERVER['REQUEST_URI'], "/patient/")) {
     ?>
         <a href="<?= $base_url ?>patient/home/home.php">
@@ -31,7 +33,12 @@ include_once __DIR__ . "/../../conf.php"
         <a href="<?= $base_url ?>/therapist/groups/groups.php">
             <p>Groups</p>
         </a>
+        <a href="<?= $base_url ?>/therapist/patient_view_page/patient_view_page.php">
+            <p>Patient</p>
+        </a>
     <?php
     }
     ?>
+
+   
 </nav>
