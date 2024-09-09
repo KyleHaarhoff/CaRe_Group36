@@ -14,11 +14,11 @@ body {
 }
 
 .journal-form {
-    margin-top: 20px;
+    margin-top: -20px;
 }
 
 .journal-form h2 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .journal-form form {
@@ -29,18 +29,18 @@ body {
 
 .journal-info {
     display: flex;
-    gap: 20px;
+    gap: 6px;
     align-items: center; 
     flex-wrap: wrap;
 }
 
 .journal-info input[type="date"],
 .journal-info input[type="number"] {
-    width: 100px; 
+    width: 120px; 
 }
 
 .journal-info select {
-    width: 120px; 
+    width: 160px; 
 }
 
 textarea {
