@@ -14,10 +14,10 @@ include_once __DIR__ . "/../../conf.php"
         <a href="<?= $base_url ?>patient/home/home.php">
             <p>Home</p>
         </a>
-        <a>
+        <a href="<?= $base_url ?>patient/journal/journal.php">
             <p>Journal</p>
         </a>
-        <a>
+        <a href="<?= $base_url ?>patient/history/history.php">
             <p>History</p>
         </a>
 
@@ -34,4 +34,15 @@ include_once __DIR__ . "/../../conf.php"
     <?php
     }
     ?>
+
+    <span class="profileContainer">
+        <img src="<?= $base_url ?>assets/images/default_profile.svg" id="profileImage">
+        <button id="profileSettingsButton" onclick="toggleProfileSettings()"><img src="<?= $base_url ?>assets/images/dropdown.svg" id="profileDropdownImage"></button>
+
+        <div id="logoutContainer">
+            <button onclick="redirect('<?= $base_url ?>')">Logout</button>
+        </div>
+    </span>
+
+    <script src="<?= $base_url ?>/common/navbar/navbar.js"></script>
 </nav>
