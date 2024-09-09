@@ -7,11 +7,11 @@
 }
 
 .MainNavbar a{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-align: center;
-    height: 100%;
+    height: 10.5vh;
     width: fit-content;
-    padding: 0 2rem;
+    padding: 0.5vh 2vw 0;
     text-decoration: none;
     color:white;
     
@@ -23,8 +23,57 @@
 }
 
 .MainNavbar a:hover{
-    box-shadow: inset 0 -5px 0 white;;
+    box-shadow: inset 0 -5px 0 #F3F3F3;;
+}
+.profileContainer{
+    position: absolute;
+    right: 0;
+
+}
+#profileImage{ 
+    height: 8vh;
+    padding: 1vh 0;
+}
+#profileSettingsButton{
+    height: 8vh;
+    width: 4vw;
+    margin: 0;
+    padding:0;
+    border:none;
+    background: none;
+
+}
+#profileSettingsButton img{
+    filter: invert(99%) sepia(88%) saturate(83%) hue-rotate(202deg) brightness(115%) contrast(91%);
+    margin-top: -0.5vh;
+    position: absolute;
+    top:2vh;
+    right: 0;
+    width: 4vw;
+}
+
+#logoutContainer{
+    display:none;
+    position: relative;
+    background: #333333;
+
+}
+#logoutContainer button{
+    text-align: center;
+    border: none;
+    padding:0.5rem;
+    margin:0;
+    background: none;
+    font-size: 1.3rem;
+    color:white;
+    width: 100%;
+}
+
+#logoutContainer button:hover{
+    box-shadow: inset 0 -5px 0 #F3F3F3;;
 }
 
 
-
+.vInvert{
+    transform: rotate(180deg);
+}

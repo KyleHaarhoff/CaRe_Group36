@@ -4,6 +4,8 @@ const groupCount = document.getElementById('groupCount')
 const allCount = document.getElementById('allCount')
 const groupPatientList = document.getElementById("groupPatientList")
 const allPatientList = document.getElementById("allPatientList")
+const minCountInput = document.getElementById("minCount")
+const groupSearchInput = document.getElementById("groupSearchInput")
 
 //function to toggle visibility of group content
 function toggleDropdown(icon, contentID){
@@ -75,9 +77,9 @@ function closeGroupManager(){
             patient.classList.remove("selected")
         }
     })
-    console.log(groupManagerCover.querySelector('.patientSearch'))
-    Array.prototype.forEach.call(groupManagerCover.querySelector('.patientSearch'), patientSearch =>{
-        console.log(patientSearch)
+    //make sure the search bars are empty
+    searchBars = document.getElementsByClassName("patientSearch")
+    Array.prototype.forEach.call(searchBars, patientSearch =>{
         patientSearch.value = ""
     })
     
@@ -147,23 +149,26 @@ function deleteGroup(id){
     
 }
 
+function searchGroups(){
+    search = groupSearchInput.value.toLowerCase()
+    minCount = minCountInput.value
 
-function searchGroups(searchInput){
-    search = searchInput.value.toLowerCase()
     //get all groups
     groups = document.getElementsByClassName("groupContainer")
     //in each group
     Array.prototype.forEach.call(groups, group => {
         display = "none"
+        //get grpup patient count
+        patientList = group.querySelector('.patientList');
 
+        count = patientList.children.length
         //check title
         title = group.querySelector('.groupTitle').textContent;
-        if(title.toLowerCase().includes(search))
+        if(title.toLowerCase().includes(search) && count >= minCount)
             display = "block"
         //check all patients
-        patientList = group.querySelector('.patientList');
         Array.prototype.forEach.call( patientList.children, patient =>{
-            if(patient.textContent.toLowerCase().includes(search))
+            if(patient.textContent.toLowerCase().includes(search)&& count >= minCount)
                 display = "block"
         })
         //choose display

@@ -16,10 +16,10 @@ include_once __DIR__ . "/../../conf.php"
         <a href="<?= $base_url ?>patient/home/home.php">
             <p>Home</p>
         </a>
-        <a>
+        <a href="<?= $base_url ?>patient/journal/journal.php">
             <p>Journal</p>
         </a>
-        <a>
+        <a href="<?= $base_url ?>patient/history/history.php">
             <p>History</p>
         </a>
 

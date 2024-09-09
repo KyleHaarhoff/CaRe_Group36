@@ -20,8 +20,9 @@
             <div class="listControlContainer">
                 <button class="careButton"  onclick="openGroupManager()">Add Group</button>
                 <span class="listControls">
-                    <span class="groupFilterContainer"><button class="otherButton">Filter</button></span>
-                    <input type="text" placeholder="Search.." class="careSearch" onchange="searchGroups(this)">
+                    <label class="minimumSizeLabel">Minimum Group Size <input type="number" value="0" min="0" id="minCount"></label>
+                    <span class="groupFilterContainer"><button class="otherButton" onclick="searchGroups()">Filter</button></span>
+                    <input type="text" placeholder="Search.." class="careSearch" onkeyup="searchGroups()" id="groupSearchInput">
                 </span>
             </div>
             <div class="groupListContainer">
@@ -97,7 +98,7 @@
                 <div class="groupManagementContent">   
                     <div class="groupPatientsContainer rounded">
                         <div class = "groupPatientsControls">
-                            <input type="text" class="patientSearch" placeholder="Search group patients..." onchange="searchGroupPatients(this)">
+                            <input type="text" value="" class="patientSearch" placeholder="Search group patients..." onkeyup="searchGroupPatients(this)">
                         </div>
                         <div id="groupPatientList">
                         </div>
@@ -108,7 +109,7 @@
                     </div>
                     <div class="allPatientsContainer rounded">
                         <div class = "allPatientsControls">
-                            <input type="text"  class="patientSearch" placeholder="Search all patients..." onchange="searchAllPatients(this)">
+                            <input type="text" value="" class="patientSearch" placeholder="Search all patients..." onkeyup="searchAllPatients(this)">
                         </div> 
                         <div id="allPatientList">
                             <span data-id="1" onclick="toggleSelected(this)">Jack Ross</span>  
