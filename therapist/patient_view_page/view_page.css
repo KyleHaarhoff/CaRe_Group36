@@ -3,13 +3,17 @@ body {
     background-color: #beb9b9;
     margin: 0;
     padding: 0;
+
+    
+    overflow-y: auto;
+}
+main{
     display: flex;
     justify-content: center;
     align-items: center;
     
-    overflow-y: auto;
-}
 
+}
 .container {
     
     width: 90%;
