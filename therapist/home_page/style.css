@@ -5,16 +5,11 @@
 }
 body {
     background-color: #fafafa;
-    margin-bottom: 20px;
     
 }
 
 .main_container {
     margin: 20px auto;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-
-
     width: 90%;
     background: #fff;
     border-radius: 8px;
@@ -39,16 +34,6 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
-#journal_status
-	{
-	border-radius: 4px;
-	text-align: center;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-    margin-left: 4px;
-
-	}
 .search-box {
     padding: 8px 12px;
     border: 1px solid #ccc;
@@ -70,20 +55,11 @@ body {
     border-bottom: 1px solid #EBEBEB;
 
 }
-/* .patient_table th:last-child {
+.patient_table th:last-child {
     text-align: right;
 }
 .patient_table td:last-child {
     text-align: right; 
-} */
-
-td a{
-    text-decoration: none;
-    color: #000;
-}
-td a:hover{
-    text-decoration: underline;
-
 }
 
 .status_unread {
