@@ -9,8 +9,6 @@ include_once __DIR__ . "/../../conf.php"
     //cuurently displaying content based on url
     //will change to access control in further phases
 
-    
-
     if (str_contains($_SERVER['REQUEST_URI'], "/patient/")) {
     ?>
         <a href="<?= $base_url ?>patient/home/home.php">
@@ -33,12 +31,18 @@ include_once __DIR__ . "/../../conf.php"
         <a href="<?= $base_url ?>/therapist/groups/groups.php">
             <p>Groups</p>
         </a>
-        <a href="<?= $base_url ?>/therapist/patient_view_page/patient_view_page.php">
-            <p>Patient</p>
-        </a>
     <?php
     }
     ?>
 
-   
+    <span class="profileContainer">
+        <img src="<?= $base_url ?>assets/images/default_profile.svg" id="profileImage">
+        <button id="profileSettingsButton" onclick="toggleProfileSettings()"><img src="<?= $base_url ?>assets/images/dropdown.svg" id="profileDropdownImage"></button>
+
+        <div id="logoutContainer">
+            <button onclick="redirect('<?= $base_url ?>')">Logout</button>
+        </div>
+    </span>
+
+    <script src="<?= $base_url ?>/common/navbar/navbar.js"></script>
 </nav>
