@@ -29,23 +29,5 @@ function myFunction(){
         }
 
     }
+    console.log(searchVal);
 }
-
-function filterTable(){
-    var dropdown = document.getElementById("journal_status");
-    var selectedValue = dropdown.value;
-    console.log("Dropdown Selected Value: ", selectedValue);
-    var table = document.getElementById('patient_table');
-    var rows = table.getElementsByTagName("tr");
-
-    for (var i = 1; i < rows.length; i++) {
-        var row = rows[i];
-        var journalStatus = row.cells[1].textContent.trim();
-        if (selectedValue == "All" || journalStatus == selectedValue) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-    }
-}
-

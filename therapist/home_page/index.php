@@ -17,17 +17,12 @@
         <div class="patient_list_header">
             <h2>Patient List</h2>
             <div class="controls">
-                <label for="journal_status"> Filter: </label>
-                <select id="journal_status" onchange="filterTable()">
-                    <option value="All">All</option>
-                    <option value="Unread">Unread</option>
-                    <option value="Up to date">Up to Date</option>
-                </select>
+                <button class="filter-btn">Filter</button>
                 <input type="search" placeholder="Search..." class="search-box" id="inp" onkeyup="myFunction()">
             </div>
         </div>
 
-        <table id="patient_table" class="patient_table">
+        <table class="patient_table">
             <thead>
                 <tr>
                     <th>Patient Name</th>
@@ -38,51 +33,35 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Jack Ross</a>
-                    </td>
-                    <td class=" status_unread">Unread
-                    </td>
+                    <td>Jack Ross</td>
+                    <td class="status_unread">Unread</td>
                     <td>No</td>
 
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>"> David Jones</a>
-
-                    </td>
+                    <td>David Jones</td>
                     <td class="status_uptodate">Up to date</td>
                     <td>Yes</td>
 
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Mike Leo</a>
-
-                    </td>
+                    <td>Mike Leo</td>
                     <td class="status_unread">Unread</td>
                     <td>Yes</td>
 
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Josh Chen</a>
-
-                    </td>
-
+                    <td>Josh Chen</td>
                     <td class="status_uptodate">Up to date</td>
                     <td>No</td>
 
                     <td>02/08/2024</td>
                 </tr>
                 <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Jack Ross</a>
-
-                    </td>
+                    <td>Jack Ross</td>
                     <td class="status_unread">Unread</td>
                     <td>Yes</td>
 
@@ -96,10 +75,7 @@
 
 
     </main>
-    <script
-
-        src="<?= $base_url ?>/therapist/home_page/script.js">
-    </script>
+    <script src="script.js"></script>
 
 </body>
 
