@@ -1,0 +1,258 @@
+
+
+.groupComponentContainer{
+    position: absolute;
+    background-color: white;
+    width: 90%;
+    height:35rem;
+    top: 50%;
+    margin-top: -15.5rem;
+    left:5%;
+}
+.groupListContainer{
+    overflow-y: scroll;
+    height:30rem;
+}
+.groupListContainer::-webkit-scrollbar{
+    width:0.4vw;
+}
+
+.groupListContainer::-webkit-scrollbar-thumb{
+    background-color: #333;
+    border-radius: 10px;
+}
+.groupListContainer::-webkit-scrollbar-track{
+    border-radius: 10px;
+    margin-block: 1rem;
+}
+
+
+.listControlContainer{
+    padding: 1rem;
+
+}
+.listControls{
+    position: absolute;
+    right:2rem;
+}
+.groupContainer{
+    margin-top: 1rem;
+    border-top:0.1px solid #bababa;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+.managementTitleContainer{
+    width:90%;
+    left:5%;
+    position: relative;
+    margin-top:1rem;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.groupTitle{
+    font-weight: 100;
+    font-size: 1.3rem;
+    height: 2rem;
+    border-radius: 3px;
+    padding: 0.2rem;
+    margin: 0;
+}
+#groupTitleInput{
+    font-weight: 100;
+    font-size: 1.3rem;
+    height: 2rem;
+    border-radius: 3px;
+    padding: 0.2rem 0.5rem;
+    margin: 0;
+    border: 1px solid #666;
+}
+
+
+.rightContentContainer{
+    text-align: right;
+}
+.closeManagerButton{
+    padding: 0;
+    background-color: white;
+    border:none;
+}
+
+.closeManagerButton img{
+    
+    width: 2;
+    height: 2;
+}
+
+.dropdownIcon{
+    max-height: 2rem;
+    float:right;
+}
+.vInvert{
+    transform: rotate(180deg);
+}
+.patientList{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.patientList span{
+    border-bottom: 1px solid #d4d4d4;
+    margin :0.5rem 0;
+    padding: 0.2rem;;
+}
+.groupButtons {
+    text-align: right;
+    padding-right: 2rem;
+}
+.groupButtons .careButton{
+    
+    font-size: 1.1rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.dropdownContent{
+    display: none;
+}
+
+
+#managerCover{
+    display: none;
+    background-color: rgb(73, 73, 73, 0.5);
+    width: 100%;
+    height: 89vh;
+    position: absolute;
+}
+
+.groupManagementContainer{
+    position: absolute;
+    background-color: white;
+    width: 60vw;
+    left:50%;
+    margin-left: -30vw;
+    height: 80vh;
+    margin-top: 5vh;
+}
+
+.groupManagementContent{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    height: 70%;
+    top:12%;
+    width: 90%;
+    left: 5%;
+}
+.groupPatientsContainer{
+    border: 1px solid #333;
+    width: 100%;
+    height: 100%;
+}
+.allPatientsContainer{
+    border: 1px solid #333;
+    width: 100%;
+    height: 55vh;
+
+}
+.countContainer{
+    padding: 1rem 0.5rem
+}
+.patientSearch{
+    width: 85%;
+    border-radius: 4px;
+    border: 1px solid #333;
+    margin-top: 1rem;
+    height: 1.3rem;
+    padding:4px;
+}
+
+.groupPatientsControls *{
+    margin-left: 1rem;
+}
+.allPatientsControls *{
+    margin-left: 1rem;
+
+}
+#groupPatientList{
+    margin-left: 1rem;
+    margin-top:1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+#groupPatientList *{
+    padding: 0.5rem;
+    cursor: pointer;
+}
+#allPatientList{
+    margin-left: 1rem;
+    margin-top:1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+#allPatientList *{
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.otherButton {
+    margin-right: 10px;
+    background-color: #ecebeb;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.rightArrow{
+    width: 4rem;
+    transform: rotate(90deg);
+    background-color: white;
+    border: none;
+    left:50%;
+    position: relative;
+    margin-left: -2rem;
+    top:50%;
+    margin-top: -4rem;
+}
+.leftArrow{
+    width: 4rem;
+    transform: rotate(-90deg);
+    background-color: white;
+    border: none;
+    left:50%;
+    position: relative;
+    margin-left: -2rem;
+    top:50%;
+}
+
+.movePatientButtonsContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.selected{
+    background-color: #ccc;
+}
+
+.minimumSizeLabel{
+    border-bottom: 2px solid #ccc;
+    margin-right: 2vw;
+    padding: 0.5rem 0.2rem;
+}
+
+
+.minimumSizeLabel input{
+    border: none;
+    width: 3vw;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    text-align: right;
+}
+
+.minimumSizeLabel input[type=number]::-webkit-inner-spin-button, 
+.minimumSizeLabel input[type=number]::-webkit-outer-spin-button {  
+    margin-left: 0.2rem;
+   opacity: 1;
+
+}

@@ -1,0 +1,74 @@
+.goalsTableContainer{
+    position: absolute;
+    width: 90vw;
+    height: 80vh;
+
+    left:50%;
+    margin-left: -45vw;
+
+    top:50%;
+    margin-top: -35vh;
+    background-color: white;
+}
+.minHeightContainer{
+    min-height: 70vh;
+}
+#goalsTable{
+    width: 100%;
+    overflow-y: scroll;
+}
+#goalsTable th{
+    padding: 15px 20px;
+    text-align: left;
+}
+#goalsTable td{
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #EBEBEB;
+    
+}
+#goalsTable tr td:nth-child(3),
+#goalsTable tr th:nth-child(3),
+#goalsTable tr td:nth-child(4),
+#goalsTable tr th:nth-child(4) {
+    text-align: right;
+}
+.hidden{
+    display: none;
+}
+
+.tableButton {
+    margin-right: 10px;
+    background-color: #ecebeb;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 5vw;
+}
+
+#toggleHiddenButton{
+    min-width: 15vw;
+}
+
+.goalTitle{
+    border: none;
+    min-width: 40vw;
+    font-size: 1rem;
+    padding: 6px;
+}
+
+.goalTitle:focus{
+    outline: none;
+}
+
+
+.editing{
+    background-color: #EBEBEB;
+}
+
+.rightContentContainer{
+    text-align: right;
+    margin-top: 1rem;
+    padding-right: 1rem;
+}

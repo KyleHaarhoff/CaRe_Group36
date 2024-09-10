@@ -1,0 +1,191 @@
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #F3F3F3;
+    margin: 0;
+    padding: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+    padding: 20px;
+    position:absolute;
+    left:50%;
+    margin-left:-600px;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding:0;
+    margin:0;
+    text-align: center;
+}
+
+.affirmation, .weekly-goals, .journal {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Affirmation Section */
+.affirmation {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.affirmation h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+/* Weekly Goals */
+.weekly-goals h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+
+.weekly-goals ul {
+    list-style: none;
+    padding: 0;
+}
+
+.weekly-goals li {
+    margin-bottom: 10px;
+}
+
+/* Journal Section */
+.journal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.journal-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.journal-list th, .journal-list td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.journal-list td {
+    font-size: 0.9em;
+}
+
+.journal-list th {
+    background-color: #f4f4f4;
+}
+
+/* Buttons */
+button.careButton {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.careButton:hover {
+    background-color: #0056b3;
+}
+
+#editImage {
+    width: 20px;
+    height: 20px;
+}
+
+#view-history {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+/* @media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .journal-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+} */
+
+
+.button-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 1rem; 
+}
+
+.careButton-patientHome{
+    background-color: #333333;
+    width: fit-content;
+    padding: 0.7rem;
+    color: white;
+    font-size: 1.0rem;
+    border-radius: 5px;
+
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+    justify-content: center;    
+    float: right;
+    margin-top: 10px;
+}
+.careButton-editGoals{
+    background-color: #333333;
+    width: fit-content;
+    padding: 0.7rem;
+    color: white;
+    font-size: 1.0rem;
+    border-radius: 5px;
+
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+    justify-content: center;
+
+}
+.careButton-editGoals:hover{
+    background-color: #0056b3;
+}
+.careButton-writing{
+    background-color: #333333;
+    width: fit-content;
+    padding: 0.7rem;
+    color: white;
+    font-size: 1.0rem;
+    border-radius: 5px;
+
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+    justify-content: center;
+
+}
+.careButton-writing:hover{
+    background-color: #0056b3;
+}
+.careButton-patientHome:hover{
+    background-color: #0056b3;
+}
