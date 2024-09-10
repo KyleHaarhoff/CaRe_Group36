@@ -15,7 +15,21 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.careButton-patientHome');
+    const buttons = document.querySelectorAll('.careButton-editGoals');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            const targetUrl = this.getAttribute('data-target');
+            if (targetUrl) {
+                window.location.href = targetUrl;
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("writing trigger")
+    const buttons = document.querySelectorAll('.careButton-writing');
 
     buttons.forEach(button => {
         button.addEventListener('click', function () {
