@@ -18,6 +18,9 @@ body {
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
     padding: 20px;
+    position:absolute;
+    left:50%;
+    margin-left:-600px;
 }
 
 header {
@@ -145,7 +148,9 @@ button.careButton:hover {
     font-weight: 500;
     line-height: 18px;
     text-align: center;
-    justify-content: center;
+    justify-content: center;    
+    float: right;
+    margin-top: 10px;
 }
 .careButton-editGoals{
     background-color: #333333;

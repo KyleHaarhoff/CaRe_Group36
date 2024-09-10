@@ -37,8 +37,6 @@ include_once __DIR__ . "/../../conf.php"
 
     <span class="profileContainer">
         <img src="<?= $base_url ?>assets/images/default_profile.svg" id="profileImage">
-        <button id="profileSettingsButton" onclick="toggleProfileSettings()"><img src="<?= $base_url ?>assets/images/dropdown.svg" id="profileDropdownImage"></button>
-
         <div id="logoutContainer">
             <button onclick="redirect('<?= $base_url ?>')">Logout</button>
         </div>

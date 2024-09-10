@@ -11,7 +11,7 @@
     <?php include "../../common/navbar/navbar.php"; ?> 
 </header>
 
-<div class="container">
+<div class="container shadow rounded">
     <div class="journal-form">
         <h2>Patient Journal</h2>
         <form class="classform">

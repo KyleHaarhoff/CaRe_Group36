@@ -8,12 +8,15 @@
 
 .MainNavbar a{
     font-size: 1.3rem;
-    text-align: center;
-    height: 10.5vh;
+    height: 11vh;
     width: fit-content;
-    padding: 0.5vh 2vw 0;
+    padding: 0 2vw 0;
     text-decoration: none;
-    color:white;
+    color: white;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
     
 
 }
@@ -28,11 +31,11 @@
 .profileContainer{
     position: absolute;
     right: 0;
-
+    display: flex
 }
 #profileImage{ 
-    height: 8vh;
-    padding: 1vh 0;
+    height: 6.5vh;
+    padding: 2vh 0;
 }
 #profileSettingsButton{
     height: 8vh;
@@ -53,10 +56,10 @@
 }
 
 #logoutContainer{
-    display:none;
-    position: relative;
     background: #333333;
-
+    display: flex;
+    height: 11vh;
+    padding-left:2vw;
 }
 #logoutContainer button{
     text-align: center;
@@ -67,6 +70,7 @@
     font-size: 1.3rem;
     color:white;
     width: 100%;
+    padding: 0 2vw;
 }
 
 #logoutContainer button:hover{

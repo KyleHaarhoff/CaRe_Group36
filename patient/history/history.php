@@ -24,47 +24,47 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128522;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>02/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128528;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>03/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128546;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>04/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128545;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128528;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>02/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128528;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>03/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128528;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>04/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128528;</td>
                 </tr>
-                <tr>
+                <tr onclick="journalRedirect()">
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
                     <td>&#128545;</td>
@@ -78,7 +78,7 @@
 
 
     </main>
-    <script src="script.js"></script>
+    <script src="history.js"></script>
 
 </body>
 

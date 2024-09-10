@@ -1,4 +1,10 @@
-# Git Commands
+
+# Please note
+The project is intended to be run with XAMPP from with the following file path htdocs/www/[project root folder]/     <br>
+**If any changes to this are made, update the $base_url variable in the conf.php file with the correct route to the project root folder**
+<br>
+<br>
+# Git Commands for team members
 <h2>Copy the repo into a folder</h2>
 <p>git clone https://github.com/KyleHaarhoff/CaRe_Group36.git</p>
 <h2>add the repo as the upstream origin</h2>
