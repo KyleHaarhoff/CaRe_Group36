@@ -50,7 +50,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <a href="../../therapist/history/history.php">
                     <button class="viewHistory">View Full History</button>
+                    </a>
                 </section>
             </div>
             <div class="main-content">
@@ -66,10 +68,14 @@
                     <h2>Therapist Notes</h2>
                     <textarea>Ben is experiencing heightened work-related stress...</textarea>
                     <div class="actions"></div>
-                    <button class="viewHistory">Edit Notes</button><br>
+                    
                     
                     <label for="followup">Requires Follow Up</label>
-                    <input type="checkbox" id="followup" name="followup">
+                    <input type="checkbox" id="followup" name="followup"><br>
+                    
+                    <button class="viewHistory">Save Notes</button>
+                   
+                    <br>
                     </div>
                 </div>
             </div>
