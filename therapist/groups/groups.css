@@ -3,11 +3,11 @@
 .groupComponentContainer{
     position: absolute;
     background-color: white;
-    width: 94%;
+    width: 90%;
     height:35rem;
     top: 50%;
     margin-top: -15.5rem;
-    left:3%;
+    left:5%;
 }
 .groupListContainer{
     overflow-y: scroll;

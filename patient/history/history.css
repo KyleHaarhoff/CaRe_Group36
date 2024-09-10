@@ -16,11 +16,12 @@ body {
 }
 
 .history_table {
+    border-collapse:collapse;
     width: 100%;
 }
 
 th, td {
-    padding: 15px 20px;
+    padding: 17px 22px;
     text-align: left;
     border-bottom: 1px solid #EBEBEB;
 }
@@ -30,4 +31,11 @@ th, td {
 }
 .history_table td:last-child {
     text-align: right; 
+}
+
+.history_table tbody td{
+    cursor: pointer;
+}
+.history_table tbody tr:hover{
+    background-color: #aaa;
 }
