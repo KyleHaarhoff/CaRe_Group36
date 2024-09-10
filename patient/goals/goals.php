@@ -57,6 +57,7 @@
             </table>
             </div>
             <div class="rightContentContainer">
+                <button class="careButton" onclick="window.location.replace('../home/home.php')">Back</button>
                 <button class="careButton"  onclick="addGoal()">Add Goal</button>
             </div>
         </div>
