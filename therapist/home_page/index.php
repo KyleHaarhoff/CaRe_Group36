@@ -92,7 +92,7 @@
 
 
         </table>
-        <button class="add-patient-btn">Add Patients</button>
+        <!-- <button class="add-patient-btn">Add Patients</button> -->
 
 
     </main>

@@ -1,6 +1,5 @@
 * {
     padding: 0;
-    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 body {
@@ -69,6 +68,13 @@ body {
     text-align: left;
     border-bottom: 1px solid #EBEBEB;
 
+}
+
+table tr:last-child {
+    border-bottom: none;
+}
+table tr:last-child td {
+    border-bottom: none;
 }
 /* .patient_table th:last-child {
     text-align: right;

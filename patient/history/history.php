@@ -14,7 +14,7 @@
         <?php include "../../common/navbar/navbar.php"; ?>
     </header>
     <main class="main">
-            
+
         <table class="history_table">
             <thead>
                 <tr>
@@ -27,50 +27,50 @@
                 <tr>
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>&#128522;</td>
                 </tr>
                 <tr>
                     <td>02/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Neutral</td>
+                    <td>&#128528;</td>
                 </tr>
                 <tr>
                     <td>03/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>&#128546;</td>
                 </tr>
                 <tr>
                     <td>04/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Sad</td>
+                    <td>&#128545;</td>
                 </tr>
                 <tr>
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>&#128528;</td>
                 </tr>
                 <tr>
                     <td>02/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Neutral</td>
+                    <td>&#128528;</td>
                 </tr>
                 <tr>
                     <td>03/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>&#128528;</td>
                 </tr>
                 <tr>
                     <td>04/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Sad</td>
+                    <td>&#128528;</td>
                 </tr>
                 <tr>
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>&#128545;</td>
                 </tr>
-               
-                
+
+
             </tbody>
 
 

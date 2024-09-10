@@ -1,6 +1,5 @@
 * {
     padding: 0;
-    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 body {
@@ -16,17 +15,16 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .history_table {
     width: 100%;
 }
-th, td {
 
+th, td {
     padding: 15px 20px;
     text-align: left;
     border-bottom: 1px solid #EBEBEB;
-
 }
+
 .history_table th:last-child {
     text-align: right;
 }
