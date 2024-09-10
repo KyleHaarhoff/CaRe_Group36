@@ -48,7 +48,7 @@
 </div>
 
             <div class="buttons">
-                <button type="submit">Add</button>
+                <button type="submit">Save</button>
                 <button type="reset">Clear</button>
             </div>
         </form>
