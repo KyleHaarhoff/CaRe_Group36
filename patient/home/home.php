@@ -38,7 +38,7 @@ include_once __DIR__ . "/../../conf.php"
                     <li>Here is another goal</li>
                     <li>One more</li>
                 </ul>
-                <button class="careButton-patientHome" data-target="../goals/goals.php">Edit Goals</button>
+                <button class="careButton-editGoals" data-target="../goals/goals.php">Edit Goals</button>
             </section>
 
             <!-- Journal Section -->
@@ -51,7 +51,8 @@ include_once __DIR__ . "/../../conf.php"
                         <option value="happy">&#128512 Happy</option>
                         <option value="angry">&#128545 Angry</option>
                     </select>
-                    <button class="careButton-patientHome">Start Writing!</button>
+                    <button class="careButton-writing" data-target="../journal-writing/journal-writing.php">Start Writing!</button>
+
                 </div>
 
                 <!-- Journal Entry Table -->
