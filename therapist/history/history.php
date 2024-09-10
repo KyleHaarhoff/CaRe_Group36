@@ -27,47 +27,47 @@
                 <tr>
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>	&#128513;</td>
                 </tr>
                 <tr>
                     <td>02/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Neutral</td>
+                    <td>&#128543;</td>
                 </tr>
                 <tr>
                     <td>03/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>	&#128513;</td>
                 </tr>
                 <tr>
                     <td>04/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Sad</td>
+                    <td>&#128528;</td>
                 </tr>
                 <tr>
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>	&#128513;</td>
                 </tr>
                 <tr>
                     <td>02/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Neutral</td>
+                    <td>&#128543;</td>
                 </tr>
                 <tr>
                     <td>03/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>	&#128513;</td>
                 </tr>
                 <tr>
                     <td>04/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Sad</td>
+                    <td>&#128528;</td>
                 </tr>
                 <tr>
                     <td>01/09/2024</td>
                     <td>This is the notes of journal entry. How you goin!</td>
-                    <td>Happy</td>
+                    <td>	&#128513;</td>
                 </tr>
                
                 
