@@ -84,7 +84,7 @@ include_once __DIR__ . "/../../conf.php"
                         </tbody>
                     </table>
                 </div>
-                <button class="careButton-patientHome">View Full History</button>
+                <button class="careButton-patientHome" onclick="window.location.replace('../history/history.php')">View Full History</button>
             </section>
         </div>
     </main>
