@@ -51,7 +51,7 @@ include_once __DIR__ . "/../../conf.php"
                         <option value="happy">&#128512 Happy</option>
                         <option value="angry">&#128545 Angry</option>
                     </select>
-                    <button class="careButton-writing" data-target="../journal-writing/journal-writing.php">Start Writing!</button>
+                    <button class="careButton-writing" data-target="../journal/journal.php">Start Writing!</button>
 
                 </div>
 
