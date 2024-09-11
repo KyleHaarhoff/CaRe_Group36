@@ -23,7 +23,7 @@
                 <input type="number" id="hours-slept" name="hours-slept" readonly value="7"> 
                 
                 <label for="mood">Mood:</label>
-                <select id="mood" name="mood"> 
+                <select id="mood" name="mood" disabled> 
                     <option value="happy">&#128522; Happy</option>
                     <option value="neutral">&#128528; Neutral</option>
                     <option value="sad">&#128546; Sad</option>
@@ -37,11 +37,11 @@
                 <input type="number" id="meals-eaten" name="meals-eaten" readonly  value="3">
 
                 <label for="exercise">Exercise:</label>
-                <input type="checkbox" id="exercise" name="exercise" readonly>
+                <input type="checkbox" id="exercise" name="exercise" disabled>
             </div>
 
             
-            <textarea id="journal-entry" name="journal-entry" rows="5" placeholder="Insert journal here...">The journal entry</textarea>
+            <textarea id="journal-entry" name="journal-entry" rows="5" placeholder="Insert journal here..." disabled>The journal entry</textarea>
 
         </form>
     </div>

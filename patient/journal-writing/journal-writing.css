@@ -70,3 +70,16 @@ textarea {
 .buttons button:hover {
     background-color: #555;
 }
+
+select[disabled] {
+    border:none; 
+    color:black;
+    opacity: 1;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+  }
