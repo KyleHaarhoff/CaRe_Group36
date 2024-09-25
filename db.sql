@@ -48,6 +48,23 @@ INSERT INTO Users(first_name, last_name, email, phone_number, password, user_typ
 --Dev
 
 --Tharushi
+CREATE TABLE groups(
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    group_name varchar(50)
+);
+
+CREATE TABLE group_members (
+    group_id INT NOT NULL,
+    user_id INT NOT NULL,
+    is_member BOOLEAN NOT NULL DEFAULT TRUE,
+    PRIMARY KEY (group_id, user_id),
+    FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+
+INSERT INTO groups (group_name)
+VALUES ('Group 1'), ('Group 2'), ('Group 3');
+
 
 --Siddique
 
