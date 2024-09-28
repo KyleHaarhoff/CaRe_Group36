@@ -1,7 +1,7 @@
 <?php
 
 define("DB_HOST", "localhost");
-define("DB_NAME", "CareGroup36");
+define("DB_NAME", "caregroup36");
 define("DB_USER", "dbadmin");
 define("DB_PASS", "");
 
