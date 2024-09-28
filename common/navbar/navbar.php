@@ -33,6 +33,16 @@ include_once __DIR__ . "/../../conf.php"
         </a>
     <?php
     }
+    else if (str_contains($_SERVER['REQUEST_URI'], "/professional/")) {
+        ?>
+            <a href="<?= $base_url ?>/professional/home/home.php">
+                <p>Home</p>
+            </a>
+            <a href="<?= $base_url ?>/professional/groups/groups.php">
+                <p>Groups</p>
+            </a>
+        <?php
+        }
     ?>
 
     <span class="profileContainer">
