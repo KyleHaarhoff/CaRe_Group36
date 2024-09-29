@@ -28,7 +28,7 @@ CREATE TABLE Users(
 
 --admin user in case
 CREATE user IF NOT EXISTS dbadmin@localhost;
-GRANT all privileges ON CareGroup36.Task TO dbadmin@localhost;
+GRANT all privileges ON CareGroup36.* TO dbadmin@localhost;
 
 
 

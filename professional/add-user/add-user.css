@@ -1,0 +1,55 @@
+.add-user-form-container{
+    position: absolute;
+    background-color: white;
+    width: 90%;
+    height:35rem;
+    top: 50%;
+    margin-top: -15.5rem;
+    left:5%;
+}
+
+.add-user-form{
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    left: 10%;
+    position: absolute;
+}
+.add-user-form *{
+    
+    padding: 0.4rem;
+}
+.add-user-form label{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.form-title{
+    color: #383838;
+    border-bottom: 2px solid rgb(210 205 205);
+    padding: 1rem 5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.user-type-select-container{
+    position: relative;
+    height: 3rem;
+    
+}
+.user-type-select-container select{
+    
+    width: 60%;
+    right: 0;
+    position: absolute;
+}
+
+#notes_input{
+    width: 100%;
+    height: 3rem;
+}
+
+.allign-right{
+    width: 100%;
+    text-align: right;
+}

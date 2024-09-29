@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+body {
+    background-color: #fafafa;
+    margin-bottom: 20px;
+    
+}
+
+.main_container {
+    position: absolute;
+    height:35rem;
+    top: 50%;
+    margin-top: -15.5rem;
+    left:5%;
+    padding-bottom: 10px;
+
+
+    width: 90%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user_list_header {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.controls {
+    display: flex;
+    align-items: center;
+}
+.filter-btn {
+    margin-right: 10px;
+    background-color: #ecebeb;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#user_type
+{
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    margin-left: 4px;
+
+}
+.search-box {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#search-result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+.user_table {
+    width: 100%;
+}
+.user_table tbody{
+    max-height: 45vh;
+    overflow-y: scroll;
+}
+.user_table tr{
+    height:10px;
+}
+.user_table th,
+.user_table td {
+
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #EBEBEB;
+
+}
+
+table tr:last-child {
+    border-bottom: none;
+}
+table tr:last-child td {
+    border-bottom: none;
+}
+
+td a{
+    text-decoration: none;
+    color: #000;
+}
+td a:hover{
+    text-decoration: underline;
+
+}
+
+.add-user{
+    margin: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-decoration: none;
+}
+
+.add-user:visited{
+    color: #fff;
+}

@@ -33,12 +33,22 @@ include_once __DIR__ . "/../../conf.php"
         </a>
     <?php
     }
+    else if (str_contains($_SERVER['REQUEST_URI'], "/professional/")) {
+        ?>
+            <a href="<?= $base_url ?>/professional/home/home.php">
+                <p>Home</p>
+            </a>
+            <a href="<?= $base_url ?>/professional/groups/groups.php">
+                <p>Groups</p>
+            </a>
+        <?php
+        }
     ?>
 
     <span class="profileContainer">
         <img src="<?= $base_url ?>assets/images/default_profile.svg" id="profileImage">
         <div id="logoutContainer">
-            <button onclick="redirect('<?= $base_url ?>')">Logout</button>
+            <button onclick="redirect('<?= $base_url."?logout=true" ?>')">Logout</button>
         </div>
     </span>
 
