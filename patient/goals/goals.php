@@ -61,6 +61,7 @@
                 <button class="careButton"  onclick="addGoal()">Add Goal</button>
             </div>
         </div>
+        
     </main>
     <?php include "../../common/confirmation/confirmation.php"; ?> 
     <?php include "../../common/notification/notification.php"; ?> 
