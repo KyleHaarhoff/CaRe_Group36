@@ -27,75 +27,65 @@
             </div>
         </div>
 
-        <table id="patient_table" class="patient_table">
-            <thead>
-                <tr>
-                    <th>Patient Name</th>
-                    <th>Journal Status</th>
-                    <th>Requires Follow-up</th>
-                    <th class="last_column">Created On</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Jack Ross</a>
-                    </td>
-                    <td class=" status_unread">Unread
-                    </td>
-                    <td>No</td>
-
-                    <td>02/08/2024</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>"> David Jones</a>
-
-                    </td>
-                    <td class="status_uptodate">Up to date</td>
-                    <td>Yes</td>
-
-                    <td>02/08/2024</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Mike Leo</a>
-
-                    </td>
-                    <td class="status_unread">Unread</td>
-                    <td>Yes</td>
-
-                    <td>02/08/2024</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Josh Chen</a>
-
-                    </td>
-
-                    <td class="status_uptodate">Up to date</td>
-                    <td>No</td>
-
-                    <td>02/08/2024</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a class="patient_names" href="<?= $patient_view_page ?>">Jack Ross</a>
-
-                    </td>
-                    <td class="status_unread">Unread</td>
-                    <td>Yes</td>
-
-                    <td>02/08/2024</td>
-                </tr>
-            </tbody>
 
 
-        </table>
         <!-- <button class="add-patient-btn">Add Patients</button> -->
 
 
+
+        <?php
+        // Database connection parameters
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "caregroup36";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT * From patients";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<table id='patient_table' class='patient_table'>
+            <thead>";
+            echo "<tr>";
+            echo "<th>Patient Name</th>";
+            echo "<th>Journal Status</th>";
+            echo "<th>Requires Follow-up</th>";
+            echo "<th class='last_column'>Created On</th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+
+            while ($row = $result->fetch_assoc()) {
+
+                echo "<tr>";
+                echo "<td><a class='patient_names' href='patient_view_page/patient_view_page.php?id=" . $row['id'] . "'>" . htmlspecialchars($row['name']) . "</a></td>";
+                echo "<td>" . ($row['created_on']) . "</td>";
+
+                echo "<td>" . htmlspecialchars($row['requires_followup']) . "</td>";
+                echo "<td>" . date("d/m/Y", strtotime($row['created_on'])) . "</td>";
+                echo "</tr>";
+            }
+
+            echo "</tbody>";
+            echo "</table>";
+        } else {
+            echo "<p>No patient data found</p>";
+        }
+        $conn->close();
+
+
+        ?>
     </main>
+
     <script
 
         src="<?= $base_url ?>/therapist/home_page/script.js">
