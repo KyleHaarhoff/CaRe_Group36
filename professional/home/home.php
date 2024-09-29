@@ -1,6 +1,19 @@
 <?php
     #Access control
-
+    session_start();
+    // Check if the user is logged in
+    if (!isset($_SESSION['id'])) {
+        header("Location: ../../index.php");
+        exit();
+    }
+    //check if the user is allowed to view this page
+    if ($_SESSION['user_type'] != 3) {
+        http_response_code(403);
+        echo "<h1>403 Forbidden</h1>";
+        echo "<p>You are not authorized to access this page.</p>";
+    
+        exit();
+    }
     #database connection
     require_once "../../common/db/db-conn.php"; 
     
