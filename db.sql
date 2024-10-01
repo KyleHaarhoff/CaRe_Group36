@@ -50,13 +50,17 @@ INSERT INTO Users(first_name, last_name, email, phone_number, password, user_typ
 --Tharushi
 CREATE TABLE groups(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    group_name varchar(50)
+    group_name varchar(50),
+    is_active BOOLEAN
+
 );
 
 CREATE TABLE group_members (
     group_id INT NOT NULL,
     user_id INT NOT NULL,
     is_member BOOLEAN NOT NULL DEFAULT TRUE,
+    created_by varchar(100),
+    created_date DATE,
     PRIMARY KEY (group_id, user_id),
     FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
