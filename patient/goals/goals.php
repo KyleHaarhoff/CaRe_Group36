@@ -1,7 +1,10 @@
+
+
 <?php
 
-    include_once __DIR__."/../../conf.php"
-?>
+    include_once __DIR__."/../../conf.php";
+require_once "../../common/db/db-conn.php";
+   ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +18,8 @@
         <?php include "../../common/navbar/navbar.php"; ?> 
     </header>
     <main>
+
+  
         <div class="goalsTableContainer shadow rounded">
         <div class="minHeightContainer">
             <table id="goalsTable">
@@ -26,6 +31,7 @@
                         
                     </tr>
                 </thead>
+                
                 <tbody>
                     <tr>
                         <td><input type="checkbox" class="goalCheckbox" onclick="makeEditable(this)"></td>
@@ -61,6 +67,23 @@
                 <button class="careButton"  onclick="addGoal()">Add Goal</button>
             </div>
         </div>
+        <?php 
+
+$sql= "SELECT user_id, goal_text FROM Goals;";
+
+if($result=mysqli_query($conn,$sql)) {
+if(mysqli_num_rows($result)> 0) {
+    echo "<ul>";
+    while($row=mysqli_fetch_assoc($result)) {
+        echo "<li><p>" . $row["user_id"] . ", goals:" . $row["goal_text"]
+        . "</p></li>";
+    }
+    echo"</ul>";
+    mysqli_free_result($result);
+}
+}
+mysqli_close($conn);
+?>
         
     </main>
     <?php include "../../common/confirmation/confirmation.php"; ?> 
