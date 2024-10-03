@@ -46,6 +46,29 @@ INSERT INTO Users(first_name, last_name, email, phone_number, password, user_typ
 INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 'jessC@gmail.com', '+6212661234', SHA1('password'), 2);
 
 --Dev
+CREATE TABLE Goals (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,   
+    user_id INT NOT NULL,                         
+    goal_text TEXT NOT NULL,                      
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+    is_completed BOOLEAN DEFAULT FALSE,           
+    FOREIGN KEY (user_id) REFERENCES Users(id)    
+);
+-- User 1's goals
+INSERT INTO Goals (user_id, goal_text, is_completed) 
+VALUES 
+(1, 'Run 5km every day', FALSE),
+(1, 'Read a new book every month', TRUE),
+(1, 'Start a new online course', FALSE);
+
+-- User 2's goals
+INSERT INTO Goals (user_id, goal_text, is_completed) 
+VALUES 
+(2, 'Lose 10kg in 6 months', FALSE),
+(2, 'Eat healthier meals', TRUE),
+(2, 'Save $5000 by the end of the year', FALSE);
+
 
 --Tharushi
 CREATE TABLE groups(
