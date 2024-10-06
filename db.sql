@@ -70,6 +70,38 @@ VALUES
 (2, 'Save $5000 by the end of the year', FALSE);
 
 
+--table for the session and case for the auditor to see
+CREATE TABLE Sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    p_id INT , 
+     id INT ,
+   
+    session_length INT, 
+    session_date DATE,
+    FOREIGN KEY (id) REFERENCES therapists(id) ON DELETE CASCADE,
+    FOREIGN KEY (p_id) REFERENCES patients(p_id) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE Cases (
+    case_id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT,
+    case_type VARCHAR(100),
+    FOREIGN KEY (id) REFERENCES therapists(id)
+);
+
+INSERT INTO Sessions (p_id, id, session_length, session_date)
+VALUES 
+(1, 1, 60, '2024-09-15'),
+(2, 1, 45, '2024-09-18');
+
+INSERT INTO Cases (id, case_type)
+VALUES 
+(1, 'Therapeutic Consultation'),
+(2, 'Depression Therapy'),
+
+
 --Tharushi
 CREATE TABLE groups(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
