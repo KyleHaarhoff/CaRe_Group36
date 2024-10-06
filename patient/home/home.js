@@ -1,9 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("click")
-    console.log("affirmation editButton 1",affirmation,editButton)
     if (affirmation && editButton) {
-        console.log("affirmation editButton",affirmation,editButton)
         editButton.addEventListener('click', () => {
 
 
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("writing trigger")
     const buttons = document.querySelectorAll('.careButton-writing');
 
     buttons.forEach(button => {

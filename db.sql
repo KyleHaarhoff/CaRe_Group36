@@ -6,7 +6,7 @@ CREATE DATABASE CareGroup36;
 
 USE CareGroup36;
 
---Kyle
+-- Kyle
 CREATE TABLE UserType(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     type varchar(30)
@@ -26,7 +26,7 @@ CREATE TABLE Users(
 	
 ) AUTO_INCREMENT = 1;
 
---admin user in case
+-- admin user in case
 CREATE user IF NOT EXISTS dbadmin@localhost;
 GRANT all privileges ON CareGroup36.* TO dbadmin@localhost;
 
@@ -45,7 +45,11 @@ INSERT INTO Users(first_name, last_name, email, phone_number, password, user_typ
 
 INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 'jessC@gmail.com', '+6212661234', SHA1('password'), 2);
 
---Dev
+INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Thando', 'Zwane', 'Thandz@gmail.com', '+6212661234', SHA1('password'), 3);
+
+INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Sarah', 'Jones', 'sa@gmail.com', '+6212661234', SHA1('password'), 4);
+
+-- Dev
 CREATE TABLE Goals (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,   
     user_id INT NOT NULL,                         
@@ -102,7 +106,39 @@ VALUES
 (2, 'Depression Therapy'),
 
 
---Tharushi
+--table for the session and case for the auditor to see
+CREATE TABLE Sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    p_id INT , 
+     id INT ,
+   
+    session_length INT, 
+    session_date DATE,
+    FOREIGN KEY (id) REFERENCES therapists(id) ON DELETE CASCADE,
+    FOREIGN KEY (p_id) REFERENCES patients(p_id) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE Cases (
+    case_id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT,
+    case_type VARCHAR(100),
+    FOREIGN KEY (id) REFERENCES therapists(id)
+);
+
+-- Tharushi
+INSERT INTO Sessions (p_id, id, session_length, session_date)
+VALUES 
+(1, 1, 60, '2024-09-15'),
+(2, 1, 45, '2024-09-18');
+
+INSERT INTO Cases (id, case_type)
+VALUES 
+(1, 'Therapeutic Consultation'),
+(2, 'Depression Therapy'),
+
+
 CREATE TABLE groups(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     group_name varchar(50),
@@ -125,9 +161,9 @@ INSERT INTO groups (group_name)
 VALUES ('Group 1'), ('Group 2'), ('Group 3');
 
 
---Siddique
+-- Siddique
 
---Arun
+-- Arun
 
 CREATE TABLE patient_therapist (
     patient_id INT,
