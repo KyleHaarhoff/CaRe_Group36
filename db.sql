@@ -6,7 +6,7 @@ CREATE DATABASE CareGroup36;
 
 USE CareGroup36;
 
---Kyle
+-- Kyle
 CREATE TABLE UserType(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     type varchar(30)
@@ -26,7 +26,7 @@ CREATE TABLE Users(
 	
 ) AUTO_INCREMENT = 1;
 
---admin user in case
+-- admin user in case
 CREATE user IF NOT EXISTS dbadmin@localhost;
 GRANT all privileges ON CareGroup36.* TO dbadmin@localhost;
 
@@ -45,7 +45,11 @@ INSERT INTO Users(first_name, last_name, email, phone_number, password, user_typ
 
 INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 'jessC@gmail.com', '+6212661234', SHA1('password'), 2);
 
---Dev
+INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Thando', 'Zwane', 'Thandz@gmail.com', '+6212661234', SHA1('password'), 3);
+
+INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Sarah', 'Jones', 'sa@gmail.com', '+6212661234', SHA1('password'), 4);
+
+-- Dev
 CREATE TABLE Goals (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,   
     user_id INT NOT NULL,                         
@@ -70,7 +74,7 @@ VALUES
 (2, 'Save $5000 by the end of the year', FALSE);
 
 
---Tharushi
+-- Tharushi
 CREATE TABLE groups(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     group_name varchar(50),
@@ -93,11 +97,11 @@ INSERT INTO groups (group_name)
 VALUES ('Group 1'), ('Group 2'), ('Group 3');
 
 
---Siddique
+-- Siddique
 
---Arun
+-- Arun
 
---Patients Table---
+-- Patients Table---
 CREATE TABLE patients (
     p_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -106,7 +110,7 @@ CREATE TABLE patients (
     created_on DATE NOT NULL
 );
 
---Therapist Table---
+-- Therapist Table---
 CREATE TABLE therapists (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,

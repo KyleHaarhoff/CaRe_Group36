@@ -1,9 +1,23 @@
 
 
 <?php
+    #Access control
+    session_start();
+    // Check if the user is logged in
+    if (!isset($_SESSION['id'])) {
+        header("Location: ../../index.php");
+        exit();
+    }
+    //check if the user is allowed to view this page
+    if ($_SESSION['user_type'] != 1) {
+        http_response_code(403);
+        echo "<h1>403 Forbidden</h1>";
+        echo "<p>You are not authorized to access this page.</p>";
 
+        exit();
+    }
     include_once __DIR__."/../../conf.php";
-require_once "../../common/db/db-conn.php";
+    require_once "../../common/db/db-conn.php";
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,30 +47,46 @@ require_once "../../common/db/db-conn.php";
                 </thead>
                 
                 <tbody>
-                    <tr>
-                        <td><input type="checkbox" class="goalCheckbox" onclick="makeEditable(this)"></td>
-                        <td><input readonly type="text" value = "5km of running" class="goalTitle"></td>
-                        <td><button class="tableButton" onclick="makeEditable(this)">Edit</button></td>
-                        <td><button class="tableButton" onclick="confirmRemoveGoal(this)">Remove</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="goalCheckbox" onclick="makeEditable(this)"></td>
-                        <td><input readonly type="text" value = "Don't eat fast food" class="goalTitle"></td>
-                        <td><button class="tableButton" onclick="makeEditable(this)">Edit</button></td>
-                        <td><button class="tableButton" onclick="confirmRemoveGoal(this)">Remove</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="goalCheckbox" onclick="makeEditable(this)"></td>
-                        <td><input readonly type="text" value = "Go to bed by 10pm each day this week" class="goalTitle"></td>
-                        <td><button class="tableButton" onclick="makeEditable(this)">Edit</button></td>
-                        <td><button class="tableButton" onclick="confirmRemoveGoal(this)">Remove</button></td>
-                    </tr>
-                    <tr class="hidden">
-                        <td><input type="checkbox" checked class="goalCheckbox" onclick="makeEditable(this)"></td>
-                        <td><input readonly type="text" value = "Finish this page" class="goalTitle"></td>
-                        <td><button class="tableButton" onclick="makeEditable(this)">Edit</button></td>
-                        <td><button class="tableButton" onclick="confirmRemoveGoal(this)">Remove</button></td>
-                    </tr>
+
+                <?php 
+
+                    $sql= "SELECT * FROM Goals  where user_id = ?;";
+                    if ($stmt = mysqli_prepare($conn, $sql)) {
+                        mysqli_stmt_bind_param($stmt, 'i', $_SESSION['id']);
+
+                        mysqli_stmt_execute($stmt);
+
+                        if($result = mysqli_stmt_get_result($stmt)) {
+                        if(mysqli_num_rows($result)> 0) {
+                            while($row=mysqli_fetch_assoc($result)) {
+                                if ($row["is_completed"]){
+                                    echo '<tr class="hidden" data-id="'.$row["id"].'">';
+                                }
+                                else{
+                                    echo '<tr data-id="'.$row["id"].'">';
+                                }
+
+
+                                ?>
+                                    <td><input type="checkbox" <?php
+                                        if ($row["is_completed"]){
+                                            echo 'checked';
+                                        } ?> class="goalCheckbox" onclick="makeEditable(this)"></td>
+                                    <td><input readonly type="text" value = "<?= $row["goal_text"] ?>" class="goalTitle"></td>
+                                    <td><button class="tableButton" onclick="makeEditable(this)">Edit</button></td>
+                                    <td><button class="tableButton" onclick="confirmRemoveGoal(this)">Remove</button></td>
+                                <?php
+
+                            }
+                            echo"</tr>";
+                            mysqli_free_result($result);
+                        }
+                        }
+                    }
+                    mysqli_close($conn);
+                    ?>
+
+                    
                 </tbody>
 
 
@@ -67,23 +97,7 @@ require_once "../../common/db/db-conn.php";
                 <button class="careButton"  onclick="addGoal()">Add Goal</button>
             </div>
         </div>
-        <?php 
-
-$sql= "SELECT user_id, goal_text FROM Goals;";
-
-if($result=mysqli_query($conn,$sql)) {
-if(mysqli_num_rows($result)> 0) {
-    echo "<ul>";
-    while($row=mysqli_fetch_assoc($result)) {
-        echo "<li><p>" . $row["user_id"] . ", goals:" . $row["goal_text"]
-        . "</p></li>";
-    }
-    echo"</ul>";
-    mysqli_free_result($result);
-}
-}
-mysqli_close($conn);
-?>
+        
         
     </main>
     <?php include "../../common/confirmation/confirmation.php"; ?> 
