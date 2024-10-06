@@ -46,8 +46,84 @@ INSERT INTO Users(first_name, last_name, email, phone_number, password, user_typ
 INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 'jessC@gmail.com', '+6212661234', SHA1('password'), 2);
 
 --Dev
+CREATE TABLE Goals (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,   
+    user_id INT NOT NULL,                         
+    goal_text TEXT NOT NULL,                      
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+    is_completed BOOLEAN DEFAULT FALSE,           
+    FOREIGN KEY (user_id) REFERENCES Users(id)    
+);
+-- User 1's goals
+INSERT INTO Goals (user_id, goal_text, is_completed) 
+VALUES 
+(1, 'Run 5km every day', FALSE),
+(1, 'Read a new book every month', TRUE),
+(1, 'Start a new online course', FALSE);
+
+-- User 2's goals
+INSERT INTO Goals (user_id, goal_text, is_completed) 
+VALUES 
+(2, 'Lose 10kg in 6 months', FALSE),
+(2, 'Eat healthier meals', TRUE),
+(2, 'Save $5000 by the end of the year', FALSE);
+
+
+--table for the session and case for the auditor to see
+CREATE TABLE Sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    p_id INT , 
+     id INT ,
+   
+    session_length INT, 
+    session_date DATE,
+    FOREIGN KEY (id) REFERENCES therapists(id) ON DELETE CASCADE,
+    FOREIGN KEY (p_id) REFERENCES patients(p_id) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE Cases (
+    case_id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT,
+    case_type VARCHAR(100),
+    FOREIGN KEY (id) REFERENCES therapists(id)
+);
+
+INSERT INTO Sessions (p_id, id, session_length, session_date)
+VALUES 
+(1, 1, 60, '2024-09-15'),
+(2, 1, 45, '2024-09-18');
+
+INSERT INTO Cases (id, case_type)
+VALUES 
+(1, 'Therapeutic Consultation'),
+(2, 'Depression Therapy'),
+
 
 --Tharushi
+CREATE TABLE groups(
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    group_name varchar(50),
+    is_active BOOLEAN
+
+);
+
+CREATE TABLE group_members (
+    group_id INT NOT NULL,
+    user_id INT NOT NULL,
+    is_member BOOLEAN NOT NULL DEFAULT TRUE,
+    created_by varchar(100),
+    created_date DATE,
+    PRIMARY KEY (group_id, user_id),
+    FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+
+INSERT INTO groups (group_name)
+VALUES ('Group 1'), ('Group 2'), ('Group 3');
+
 
 --Siddique
 
