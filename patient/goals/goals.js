@@ -100,3 +100,17 @@ function confirmRemoveGoal(inputElement){
         openNotification("Successfully deleted!", 3000)
     }, ()=>{})
 }
+
+function addGoal() {
+    const goalTitle = "";  // Set default empty title
+    const request = new XMLHttpRequest();
+    request.open("POST", "add_goal.php", true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.onload = function () {
+        if (this.status === 200) {
+            // Reload the page or dynamically append the new row
+            window.location.reload();
+        }
+    };
+    request.send("title=" + encodeURIComponent(goalTitle));
+}
