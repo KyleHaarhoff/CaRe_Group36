@@ -67,7 +67,7 @@
             while ($row = $result->fetch_assoc()) {
 
                 echo "<tr>";
-                echo "<td><a class='patient_names' href='patient_view_page/patient_view_page.php?id=" . $row['patient_id'] . "'>" . htmlspecialchars($row['first_name']) . "</a></td>";
+                echo "<td><a class='patient_names' href='../patient_view_page/patient_view_page.php?id=" . $row['patient_id'] . "'>" . htmlspecialchars($row['first_name']) . "</a></td>";
                 echo "<td>" . ($row['created_on']) . "</td>";
 
                 echo "<td>" . htmlspecialchars($row['requires_followup']) . "</td>";
