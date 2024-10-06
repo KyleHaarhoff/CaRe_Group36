@@ -53,43 +53,23 @@ INSERT INTO Users(first_name, last_name, email, phone_number, password, user_typ
 
 --Arun
 
---Patients Table---
-CREATE TABLE patients (
-    p_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    journal_status ENUM('Unread', 'Up to date') NOT NULL,
-    requires_followup ENUM('Yes', 'No') NOT NULL,
-    created_on DATE NOT NULL
-);
-
---Therapist Table---
-CREATE TABLE therapists (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    specialty VARCHAR(100),
-    contact_info VARCHAR(255)
-);
-
 CREATE TABLE patient_therapist (
     patient_id INT,
     therapist_id INT,
     assigned_on DATE NOT NULL,
     PRIMARY KEY (patient_id, therapist_id),
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,
-    FOREIGN KEY (therapist_id) REFERENCES therapists(id) ON DELETE CASCADE
+    journal_status ENUM('Unread', 'Up to date') NOT NULL,
+    requires_followup ENUM('Yes', 'No') NOT NULL,
+    created_on DATE NOT NULL,
+    FOREIGN KEY (patient_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (therapist_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
-INSERT INTO patients (name, journal_status, requires_followup, created_on) VALUES
-('Jack Ross', 'Unread', 'No', '2024-08-02'),
-('David Jones', 'Up to date', 'Yes', '2024-08-02'),
-('Mike Leo', 'Unread', 'Yes', '2024-08-02'),
-('Josh Chen', 'Up to date', 'No', '2024-08-02');
+INSERT INTO patient_therapist (patient_id, therapist_id, assigned_on, journal_status, requires_followup, created_on)
+VALUES
+(1, 2, '2024-08-01', 'Unread', 'No', '2024-08-02'),
+(3, 2, '2024-09-15', 'Up to date', 'Yes', '2024-09-16'),
+(1, 2, '2024-09-10', 'Unread', 'No', '2024-09-12'),
+(2, 2, '2024-09-10', 'Unread', 'No', '2024-09-12'),
+(4, 2, '2024-09-10', 'Unread', 'No', '2024-09-12');
 
-INSERT INTO therapists (name, specialty, contact_info) VALUES
-('Dr. Emily Smith', 'Specialty One', 'emily@example.com'),
-('Dr. John Doe', 'Specialty Two', 'john@example.com');
-
-INSERT INTO patient_therapist (patient_id, therapist_id, assigned_on) VALUES
-(2, 1, '2024-08-02'),
-(3, 2, '2024-08-03'),
-(4, 2, '2024-08-04');

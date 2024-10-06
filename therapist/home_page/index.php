@@ -48,7 +48,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * From patients";
+        $sql = "SELECT * FROM patient_therapist LEFT JOIN users ON patient_therapist.patient_id=users.id WHERE patient_therapist.therapist_id=2";
 
         $result = $conn->query($sql);
 
@@ -67,7 +67,7 @@
             while ($row = $result->fetch_assoc()) {
 
                 echo "<tr>";
-                echo "<td><a class='patient_names' href='patient_view_page/patient_view_page.php?id=" . $row['id'] . "'>" . htmlspecialchars($row['name']) . "</a></td>";
+                echo "<td><a class='patient_names' href='patient_view_page/patient_view_page.php?id=" . $row['patient_id'] . "'>" . htmlspecialchars($row['first_name']) . "</a></td>";
                 echo "<td>" . ($row['created_on']) . "</td>";
 
                 echo "<td>" . htmlspecialchars($row['requires_followup']) . "</td>";
