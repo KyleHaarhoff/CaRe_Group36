@@ -6,7 +6,7 @@ CREATE DATABASE CareGroup36;
 
 USE CareGroup36;
 
---Kyle
+-- Kyle
 CREATE TABLE UserType(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     type varchar(30)
@@ -16,6 +16,7 @@ CREATE TABLE Users(
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name varchar(100),
     last_name varchar(100),
+    age int,
     email VARCHAR(255) NOT NULL UNIQUE,
     phone_number VARCHAR(15) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
@@ -26,7 +27,7 @@ CREATE TABLE Users(
 	
 ) AUTO_INCREMENT = 1;
 
---admin user in case
+-- admin user in case
 CREATE user IF NOT EXISTS dbadmin@localhost;
 GRANT all privileges ON CareGroup36.* TO dbadmin@localhost;
 
@@ -37,15 +38,19 @@ INSERT INTO UserType(type) VALUES('Therapist');
 INSERT INTO UserType(type) VALUES('Professional');
 INSERT INTO UserType(type) VALUES('Auditor');
 
-INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Jack', 'Ross', 'jackTheRosser@gmail.com', '+6212341235', SHA1('password'), 1);
+INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Jack', 'Ross', 43, 'jackTheRosser@gmail.com', '+6212341235', SHA1('password'), 1);
 
-INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('David', 'Jones', 'dv@gmail.com', '+6212541234', SHA1('password'), 1);
+INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('David', 'Jones', 27, 'dv@gmail.com', '+6212541234', SHA1('password'), 1);
 
-INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Bobby', 'Max', 'bm@gmail.com', '+6262341234', SHA1('password'), 1);
+INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Bobby', 'Max', 34, 'bm@gmail.com', '+6262341234', SHA1('password'), 1);
 
-INSERT INTO Users(first_name, last_name, email, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 'jessC@gmail.com', '+6212661234', SHA1('password'), 2);
+INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 41, 'jessC@gmail.com', '+6212661234', SHA1('password'), 2);
 
---Dev
+INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Thando', 'Zwane', 23, 'Thandz@gmail.com', '+12331', SHA1('password'), 3);
+
+INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Sarah', 'Jones', 43, 'sa@gmail.com', '+4444444444', SHA1('password'), 4);
+
+-- Dev
 CREATE TABLE Goals (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,   
     user_id INT NOT NULL,                         
@@ -70,7 +75,50 @@ VALUES
 (2, 'Save $5000 by the end of the year', FALSE);
 
 
---Tharushi
+-- table for the session and case for the auditor to see
+CREATE TABLE Sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    p_id INT , 
+     id INT ,
+   
+    session_length INT, 
+    session_date DATE,
+    FOREIGN KEY (id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (p_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE Cases (
+    case_id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT,
+    case_type VARCHAR(100),
+    FOREIGN KEY (id) REFERENCES Users(id)
+);
+
+INSERT INTO Sessions (p_id, id, session_length, session_date)
+VALUES 
+(1, 4, 60, '2024-09-15'),
+(2, 4, 45, '2024-09-18'),
+(1, 4, 60, '2024-09-19'),
+(2, 4, 45, '2024-09-26');
+
+INSERT INTO Cases (id, case_type)
+VALUES 
+(1, 'Therapeutic Consultation'),
+(2, 'Depression Therapy');
+
+
+
+
+-- Tharushi
+
+INSERT INTO Cases (id, case_type)
+VALUES 
+(1, 'Therapeutic Consultation'),
+(2, 'Depression Therapy');
+
+
 CREATE TABLE groups(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     group_name varchar(50),
@@ -93,7 +141,7 @@ INSERT INTO groups (group_name)
 VALUES ('Group 1'), ('Group 2'), ('Group 3');
 
 
---Siddique
+-- Siddique
 CREATE TABLE journal_entries (
     id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT,
@@ -107,45 +155,25 @@ CREATE TABLE journal_entries (
     FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
---Arun
-
---Patients Table---
-CREATE TABLE patients (
-    p_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    journal_status ENUM('Unread', 'Up to date') NOT NULL,
-    requires_followup ENUM('Yes', 'No') NOT NULL,
-    created_on DATE NOT NULL
-);
-
---Therapist Table---
-CREATE TABLE therapists (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    specialty VARCHAR(100),
-    contact_info VARCHAR(255)
-);
+-- Arun
 
 CREATE TABLE patient_therapist (
     patient_id INT,
     therapist_id INT,
     assigned_on DATE NOT NULL,
+    note MEDIUMTEXT DEFAULT "",
+    case_type TEXT(200) DEFAULT "",
     PRIMARY KEY (patient_id, therapist_id),
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,
-    FOREIGN KEY (therapist_id) REFERENCES therapists(id) ON DELETE CASCADE
+    journal_status ENUM('Unread', 'Up to date') NOT NULL,
+    requires_followup ENUM('Yes', 'No') NOT NULL,
+    created_on DATE NOT NULL,
+    FOREIGN KEY (patient_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (therapist_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
-INSERT INTO patients (name, journal_status, requires_followup, created_on) VALUES
-('Jack Ross', 'Unread', 'No', '2024-08-02'),
-('David Jones', 'Up to date', 'Yes', '2024-08-02'),
-('Mike Leo', 'Unread', 'Yes', '2024-08-02'),
-('Josh Chen', 'Up to date', 'No', '2024-08-02');
+INSERT INTO patient_therapist (patient_id, therapist_id, assigned_on, journal_status, requires_followup, created_on)
+VALUES
+(1, 4, '2024-08-01', 'Unread', 'No', '2024-08-02'),
+(3, 4, '2024-09-15', 'Up to date', 'Yes', '2024-09-16'),
+(2, 4, '2024-09-10', 'Unread', 'No', '2024-09-12');
 
-INSERT INTO therapists (name, specialty, contact_info) VALUES
-('Dr. Emily Smith', 'Specialty One', 'emily@example.com'),
-('Dr. John Doe', 'Specialty Two', 'john@example.com');
-
-INSERT INTO patient_therapist (patient_id, therapist_id, assigned_on) VALUES
-(2, 1, '2024-08-02'),
-(3, 2, '2024-08-03'),
-(4, 2, '2024-08-04');
