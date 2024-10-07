@@ -44,9 +44,12 @@
     position: absolute;
 }
 .therapist-select-container{
-    visibility: hidden;
     position: relative;
     height: 3rem;
+}
+.hidden{
+    
+    visibility: hidden;
 }
 .therapist-select-container select{
     

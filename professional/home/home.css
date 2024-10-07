@@ -115,3 +115,7 @@ td a:hover{
 .add-user:visited{
     color: #fff;
 }
+.table_container{
+    max-height: 45vh;
+    overflow-y: scroll  ;
+}

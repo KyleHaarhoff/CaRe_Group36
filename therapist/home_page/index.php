@@ -1,3 +1,21 @@
+<?php
+    #Access control
+    session_start();
+    // Check if the user is logged in
+    if (!isset($_SESSION['id'])) {
+        header("Location: ../../index.php");
+        exit();
+    }
+    //check if the user is allowed to view this page
+    if ($_SESSION['user_type'] != 2) {
+        http_response_code(403);
+        echo "<h1>403 Forbidden</h1>";
+        echo "<p>You are not authorized to access this page.</p>";
+
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,21 +52,7 @@
 
 
         <?php
-        // Database connection parameters
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "caregroup36";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT * FROM patient_therapist LEFT JOIN users ON patient_therapist.patient_id=users.id WHERE patient_therapist.therapist_id=2";
+        $sql = "SELECT * FROM patient_therapist LEFT JOIN users ON patient_therapist.patient_id=users.id WHERE patient_therapist.therapist_id=".$_SESSION['id'];
 
         $result = $conn->query($sql);
 
@@ -67,7 +71,7 @@
             while ($row = $result->fetch_assoc()) {
 
                 echo "<tr>";
-                echo "<td><a class='patient_names' href='../patient_view_page/patient_view_page.php?id=" . $row['patient_id'] . "'>" . htmlspecialchars($row['first_name']) . "</a></td>";
+                echo "<td><a class='patient_names' href='../patient_view_page/patient_view_page.php?id=" . $row['patient_id'] . "'>" . htmlspecialchars($row['first_name'])." " .htmlspecialchars($row['last_name']) . "</a></td>";
                 echo "<td>" . ($row['created_on']) . "</td>";
 
                 echo "<td>" . htmlspecialchars($row['requires_followup']) . "</td>";

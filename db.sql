@@ -17,6 +17,7 @@ CREATE TABLE Users(
     first_name varchar(100),
     last_name varchar(100),
     age int,
+    gender VARCHAR(255) DEFAULT "",
     email VARCHAR(255) NOT NULL UNIQUE,
     phone_number VARCHAR(15) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
@@ -38,17 +39,17 @@ INSERT INTO UserType(type) VALUES('Therapist');
 INSERT INTO UserType(type) VALUES('Professional');
 INSERT INTO UserType(type) VALUES('Auditor');
 
-INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Jack', 'Ross', 43, 'jackTheRosser@gmail.com', '+6212341235', SHA1('password'), 1);
+INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Jack', 'Ross', 43, 'jackTheRosser@gmail.com', 'Male', '+6212341235', SHA1('password'), 1);
 
-INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('David', 'Jones', 27, 'dv@gmail.com', '+6212541234', SHA1('password'), 1);
+INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('David', 'Jones', 27, 'dv@gmail.com', 'Male', '+6212541234', SHA1('password'), 1);
 
-INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Bobby', 'Max', 34, 'bm@gmail.com', '+6262341234', SHA1('password'), 1);
+INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Bobby', 'Max', 34, 'bm@gmail.com', 'Male', '+6262341234', SHA1('password'), 1);
 
-INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 41, 'jessC@gmail.com', '+6212661234', SHA1('password'), 2);
+INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 41, 'jessC@gmail.com', 'Female', '+6212661234', SHA1('password'), 2);
 
-INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Thando', 'Zwane', 23, 'Thandz@gmail.com', '+12331', SHA1('password'), 3);
+INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Thando', 'Zwane', 23, 'Thandz@gmail.com', 'Female', '+12331', SHA1('password'), 3);
 
-INSERT INTO Users(first_name, last_name, age, email, phone_number, password, user_type) VALUES('Sarah', 'Jones', 43, 'sa@gmail.com', '+4444444444', SHA1('password'), 4);
+INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Sarah', 'Jones', 43, 'sa@gmail.com', 'Female', '+4444444444', SHA1('password'), 4);
 
 -- Dev
 CREATE TABLE Goals (
