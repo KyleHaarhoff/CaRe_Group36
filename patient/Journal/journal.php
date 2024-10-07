@@ -14,7 +14,7 @@
 <div class="container shadow rounded">
     <div class="journal-form">
         <h2>Patient Journal</h2>
-        <form class="classform">
+        <form class="classform" action="submit_journal.php" method="POST" enctype="multipart/form-data">
             <div class="journal-info">
                 <label for="journal-date">Date:</label>
                 <input type="date" id="journal-date" name="journal-date">

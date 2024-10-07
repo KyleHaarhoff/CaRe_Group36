@@ -94,6 +94,18 @@ VALUES ('Group 1'), ('Group 2'), ('Group 3');
 
 
 --Siddique
+CREATE TABLE journal_entries (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT,
+    journal_date DATE,
+    hours_slept INT,
+    mood VARCHAR(20),
+    meals_eaten INT,
+    exercise BOOLEAN,
+    journal_entry TEXT,
+    file_path VARCHAR(255),
+    FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE
+);
 
 --Arun
 
