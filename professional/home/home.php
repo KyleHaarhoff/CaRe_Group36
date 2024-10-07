@@ -51,7 +51,7 @@
                 <input type="search" placeholder="Search..." class="search-box" id="inp" onkeyup="myFunction()">
             </div>
         </div>
-
+        <div class="table_container">
         <table id="user_table" class="user_table">
             <thead>
                 <tr>
@@ -63,14 +63,13 @@
             <tbody>
 <?php
 
-    $sql = "SELECT users.first_name, users.last_name, users.added, usertype.type from users 
+    $sql = "SELECT users.id, users.first_name, users.last_name, users.added, usertype.type from users 
     LEFT JOIN usertype ON users.user_type = usertype.id;" ;
     $statement =  mysqli_stmt_init($conn);
 
     if($result = mysqli_query($conn, $sql) ){
         if(mysqli_num_rows($result)>0){
             while ($row = mysqli_fetch_assoc($result) ){ 
-                
                 #extract the date from the datetime
                 $dt = new DateTime($row['added']);
                 $date = $dt->format('d/m/Y');
@@ -78,7 +77,7 @@
                 ?>
                 <tr data-user-type="<?= $row['type'] ?>">
                     <td>
-                        <a class="user_names" href="<?= $patient_view_page ?>"><?= $row['first_name'] ?> <?= $row['last_name'] ?></a>
+                        <a class="user_names" href="../view-user/view-user.php?id=<?php echo $row['id']; ?>"><?= $row['first_name'] ?> <?= $row['last_name'] ?></a>
                     </td>
                     <td><?= $row['type'] ?>
                     </td>
@@ -96,6 +95,7 @@
 
 
         </table>
+        </div>
         <a class="add-user" href="<?= $base_url ?>/professional/add-user/add-user.php">Add User</a> 
 
 
