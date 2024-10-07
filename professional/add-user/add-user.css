@@ -2,9 +2,9 @@
     position: absolute;
     background-color: white;
     width: 90%;
-    height:35rem;
+    height:38rem;
     top: 50%;
-    margin-top: -15.5rem;
+    margin-top: -18rem;
     left:5%;
 }
 
@@ -43,7 +43,17 @@
     right: 0;
     position: absolute;
 }
-
+.therapist-select-container{
+    visibility: hidden;
+    position: relative;
+    height: 3rem;
+}
+.therapist-select-container select{
+    
+    width: 60%;
+    right: 0;
+    position: absolute;
+}
 #notes_input{
     width: 100%;
     height: 3rem;
