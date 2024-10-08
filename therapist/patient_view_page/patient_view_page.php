@@ -52,7 +52,18 @@
         <div class="container">
             <div class="profile-journal">
                 <div class="profile">
-                    <img src="../../assets/images/profile.avif" alt="Profile Picture" class="profile-img">
+                    <?php
+                    if ($patient['profile_image']) {
+                        // Output the image data
+                        ?>
+                        <img src="patient_image.php?patient_id=<?= $patient['patient_id'] ?>" alt="Profile Picture" class="profile-img">
+                        <?php
+                    } else {
+                        ?>
+                        <img src="../../assets/images/default_profile.svg" alt="Profile Picture" class="profile-img">
+                        <?php
+                    }
+                    ?>
                     <h1><?= $patient['first_name'] . ' '. $patient['last_name']?></h1>
                 </div>
                 <section class="journal">
@@ -96,6 +107,8 @@
                     <p>Age: <?= $patient['age'] ?></p>
                     <p>Email: <?= $patient['email'] ?></p>
                     <p>Phone Number: <?= $patient['phone_number'] ?></p>
+                    <p>Age: <?= $patient['age'] ?></p>
+                    <p>Gender: <?= $patient['gender'] ?></p>
                     <?php
                     mysqli_free_result($result);
                     ?>

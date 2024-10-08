@@ -1,29 +1,47 @@
 <?php
-include_once __DIR__ . "/../../conf.php"
+include_once __DIR__ . "/../../conf.php";
+#Access control
+// Check if the user is logged in
+if(!isset($_SESSION)){
+    session_start();
+}
+if (!isset($_SESSION['id'])) {
+    header("Location: ../../index.php");
+}
+$sql= "SELECT * FROM Users where id = ?;";
+if ($stmt = mysqli_prepare($conn, $sql)) {
+    mysqli_stmt_bind_param($stmt, 'i', $_SESSION['id']);
+
+    mysqli_stmt_execute($stmt);
+    if($result = mysqli_stmt_get_result($stmt)) {
+        $user=mysqli_fetch_assoc($result);
+    }
+}
+
 ?>
 <link rel="stylesheet" type="text/css" href="<?= $base_url ?>/style.css">
 <link rel="stylesheet" type="text/css" href="<?= $base_url ?>/common/navbar/navbar.css">
 <nav class="MainNavbar">
 
     <?php
-    //cuurently displaying content based on url
     //will change to access control in further phases
+    switch ($_SESSION['user_type'])
+    {
+    case 1:
+        ?>
+            <a href="<?= $base_url ?>patient/home/home.php">
+                <p>Home</p>
+            </a>
+            <a href="<?= $base_url ?>patient/journal/journal.php">
+                <p>Journal</p>
+            </a>
+            <a href="<?= $base_url ?>patient/history/history.php">
+                <p>History</p>
+            </a>
 
-    if (str_contains($_SERVER['REQUEST_URI'], "/patient/")) {
-    ?>
-        <a href="<?= $base_url ?>patient/home/home.php">
-            <p>Home</p>
-        </a>
-        <a href="<?= $base_url ?>patient/journal/journal.php">
-            <p>Journal</p>
-        </a>
-        <a href="<?= $base_url ?>patient/history/history.php">
-            <p>History</p>
-        </a>
-
-    <?php
-    }
-    else if (str_contains($_SERVER['REQUEST_URI'], "/therapist/")) {
+        <?php
+        break;
+    case 2:
     ?>
         <a href="<?= $base_url ?>/therapist/home_page/index.php">
             <p>Home</p>
@@ -32,21 +50,32 @@ include_once __DIR__ . "/../../conf.php"
             <p>Groups</p>
         </a>
     <?php
-    }
-    else if (str_contains($_SERVER['REQUEST_URI'], "/professional/")) {
+        break;
+    case 3:
         ?>
             <a href="<?= $base_url ?>/professional/home/home.php">
                 <p>Home</p>
             </a>
-            <a href="<?= $base_url ?>/professional/groups/groups.php">
-                <p>Groups</p>
-            </a>
         <?php
-        }
+        break;
+    }
     ?>
-
     <span class="profileContainer">
-        <img src="<?= $base_url ?>assets/images/default_profile.svg" id="profileImage">
+
+        <?php
+        if ($user['profile_image']) {
+            // Output the image data
+            ?>
+            <a  href="<?= $base_url ?>/profile/update-profile.php"><img src="<?= $base_url ?>/profile/user-profile-image.php" id="profileImage"  ></a> 
+            <?php
+        } else {
+            ?>
+            <a  href="<?= $base_url ?>/profile/update-profile.php"><img src="<?= $base_url ?>assets/images/default_profile.svg" id="profileImage"></a>
+            <?php
+        }
+        ?>
+
+        
         <div id="logoutContainer">
             <button onclick="redirect('<?= $base_url."?logout=true" ?>')">Logout</button>
         </div>
