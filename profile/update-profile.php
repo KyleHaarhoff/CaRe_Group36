@@ -25,6 +25,20 @@
 
             $flag = mysqli_stmt_execute($statement);
         }
+
+        if(isset($_POST['password'])){
+            $sql = "UPDATE Users SET password = SHA1(?) WHERE id = ?" ;
+            $statement =  mysqli_stmt_init($conn);
+            $password = $_POST['password'];
+            mysqli_stmt_prepare($statement, $sql); 
+
+            mysqli_stmt_bind_param($statement, 'si', $password,
+                                                    $_SESSION['id']
+                                                    ); 
+
+            $flag = mysqli_stmt_execute($statement);
+
+        }
     }
 
 
@@ -51,7 +65,7 @@
     <header>
         <?php include "../common/navbar/navbar.php"; ?>
     </header>
-    <form class="profile shadow rounded" method="POST" enctype="multipart/form-data">
+    <div class="profile shadow rounded">
             <?php
             if ($user['profile_image']) {
                 // Output the image data
@@ -65,11 +79,15 @@
             }
             ?>
             <h1><?= $user['first_name'] . ' '. $user['last_name']?></h1>
-            <div>
+            <form  method="POST" enctype="multipart/form-data">
                 <input type="file" name="image" accept="image/*"  class="fileUpload" id="file-upload">
                 <input type="submit" value="Save" class="careButton">
-            </div>
-    </form>
+            </form>
+            <form  method="POST" class="password-container">
+                <input type="password" name="password" class="password">
+                <input type="submit" value="Update Password" class="careButton">
+            </form>
+        </div>
     <input id="flag" type="hidden" value="<?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo 1;

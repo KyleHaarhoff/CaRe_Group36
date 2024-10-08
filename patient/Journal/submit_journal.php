@@ -1,60 +1,78 @@
 <?php
 session_start(); // Start the session to access session variables
-$_SESSION['patient_id'] = 2;
+if (!isset($_SESSION['id'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+//check if the user is allowed to view this page
+if ($_SESSION['user_type'] != 1) {
+    http_response_code(403);
+    echo "<h1>403 Forbidden</h1>";
+    echo "<p>You are not authorized to access this page.</p>";
+
+    exit();
+}
 
 include '../../common/db/db-conn.php'; // Include your database connection
 
-// Check if patient_id is stored in the session after login
-if (isset($_SESSION['patient_id'])) {
-    $patient_id = $_SESSION['patient_id'];
-} else {
-    // Redirect to login page or handle error
-    echo "Patient not logged in.";
-    exit;
-}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
-    $journal_date = $_POST['journal-date'];
-    $hours_slept = $_POST['hours-slept'];
-    $mood = $_POST['mood'];
-    $meals_eaten = $_POST['meals-eaten'];
+    $journal_date = htmlspecialchars($_POST['journal-date']);
+    $hours_slept = htmlspecialchars($_POST['hours-slept']);
+    $mood = htmlspecialchars($_POST['mood']);
+    $meals_eaten = htmlspecialchars($_POST['meals-eaten']);
     $exercise = isset($_POST['exercise']) ? 1 : 0; // Convert checkbox to boolean
-    $journal_entry = $_POST['journal-entry'];
+    $journal_entry = htmlspecialchars($_POST['journal-entry']);
 
-    // Handle file upload
-    $file_path = ''; // Initialize file path
-    if (isset($_FILES['files']) && $_FILES['files']['error'] == UPLOAD_ERR_OK) {
-        $target_dir = "uploads/"; // Specify your upload directory
-        $target_file = $target_dir . basename($_FILES["files"]["name"]);
-
-        // Move the uploaded file to the target directory
-        if (move_uploaded_file($_FILES["files"]["tmp_name"], $target_file)) {
-            $file_path = $target_file; // Set file path if upload is successful
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-            exit; // Exit if file upload fails
-        }
-    }
+    
 
     // Prepare SQL INSERT statement
-    $sql = "INSERT INTO journal_entries (patient_id, journal_date, hours_slept, mood, meals_eaten, exercise, journal_entry, file_path) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO journal_entries (patient_id, journal_date, hours_slept, mood, meals_eaten, exercise, journal_entry) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters
-        $stmt->bind_param('issiiiss', $patient_id, $journal_date, $hours_slept, $mood, $meals_eaten, $exercise, $journal_entry, $file_path);
+        $stmt->bind_param('isisiis', $_SESSION['id'], $journal_date, $hours_slept, $mood, $meals_eaten, $exercise, $journal_entry);
         
+
         // Execute statement
         if ($stmt->execute()) {
-            echo "Journal entry added successfully!";
+            //If we have files
+            if ($_FILES['files']["tmp_name"][0] != "") {
+                $last_id = $conn->insert_id;
+                $flag = false;
+                foreach ($_FILES['files']["tmp_name"] as $file){
+                    $sql = "INSERT INTO journal_images (journal_id, image_data) VALUES (?,?) ;" ;
+                    $statement =  mysqli_stmt_init($conn);
+                    $image_data = file_get_contents($file);
+                    mysqli_stmt_prepare($statement, $sql); 
+
+                    mysqli_stmt_bind_param($statement, 'is', 
+                                                $last_id,
+                                                $image_data); 
+                    if (!mysqli_stmt_execute($statement))
+                        $flag = true;
+
+                }
+                if (!$flag){
+                    header("location: ../home/home.php?notification=true&success=true&message=Successfully Saved Journal");
+                } else {
+                    header("location: goals.php?notification=true&success=false&message=Saved Journal but not images");
+                }
+                }
+                else{
+                    header("location: ../home/home.php?notification=true&success=true&message=Successfully Saved Journal");
+                }
+            
         } else {
-            echo "Error: " . $stmt->error; // Display error if execution fails
+            header("location: goals.php?notification=true&success=false&message=An error occurred");
         }
         
         $stmt->close(); // Close statement
     } else {
-        echo "Error preparing statement: " . $conn->error; // Display error if preparation fails
+        header("location: goals.php?notification=true&success=false&message=Saved Journal but not images");
     }
 
     $conn->close(); // Close database connection

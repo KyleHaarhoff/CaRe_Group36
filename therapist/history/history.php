@@ -1,3 +1,20 @@
+<?php
+    #Access control
+    session_start();
+    // Check if the user is logged in
+    if (!isset($_SESSION['id'])) {
+        header("Location: ../../index.php");
+        exit();
+    }
+    //check if the user is allowed to view this page
+    if ($_SESSION['user_type'] != 2) {
+        http_response_code(403);
+        echo "<h1>403 Forbidden</h1>";
+        echo "<p>You are not authorized to access this page.</p>";
+
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +44,7 @@
                 <?php
 
                 // Prepare the SQL statement with a placeholder
-                $sql = "SELECT journal_date, journal_entry, mood FROM journal_entries WHERE patient_id = ? ORDER BY journal_date DESC";
+                $sql = "SELECT id,journal_date, journal_entry, mood FROM journal_entries WHERE patient_id = ? ORDER BY journal_date DESC";
 
                 // Create a prepared statement
                 $stmt = $conn->prepare($sql);
@@ -44,28 +61,13 @@
 
                 // Display fetched data in the table
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr onclick=\"journalRedirect()\">";
+                    echo "<tr onclick=\"journalRedirect(".$row['id'].")\">";
                     echo "<td>" . date("d/m/Y", strtotime($row['journal_date'])) . "</td>";
                     echo "<td>" . htmlspecialchars($row['journal_entry']) . "</td>";
 
                     // Display mood as emoji
-                    switch ($row['mood']) {
-                        case 'happy':
-                            echo "<td>&#128522;</td>";
-                            break;
-                        case 'neutral':
-                            echo "<td>&#128528;</td>";
-                            break;
-                        case 'sad':
-                            echo "<td>&#128546;</td>";
-                            break;
-                        case 'angry':
-                            echo "<td>&#128545;</td>";
-                            break;
-                        default:
-                            echo "<td>&#128528;</td>"; // Default neutral face
-                            break;
-                    }
+                    echo "<td>" .$moods[$row['mood']]. "</td>";
+                    
                     echo "</tr>";
                 }
 

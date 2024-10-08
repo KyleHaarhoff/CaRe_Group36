@@ -53,9 +53,19 @@ if (isset($_POST["first_name"])&&
 
     #redirect based on success
     if($success){
+        $last_id = $conn->insert_id;
+        if($user_type == 1){
+            $sql = "INSERT INTO Affirmations(patient_id) VALUES (?);";
+            $statement =  mysqli_stmt_init($conn);
+
+            mysqli_stmt_prepare($statement, $sql); 
+            mysqli_stmt_bind_param($statement, 'i', $last_id);
+            $success = mysqli_stmt_execute($statement);
+        }
+
+
         #if it is a patient and there is a therapist
         if (isset($_POST["therapist"])&& $user_type == 1){
-            $last_id = $conn->insert_id;
             $sql = "INSERT INTO patient_therapist (patient_id, therapist_id, assigned_on, journal_status, requires_followup, created_on)
                     VALUES
                     (?, ?, '".date("Y-m-d")."', 'Up to date', 'No', '".date("Y-m-d")."')" ;
@@ -84,6 +94,11 @@ if (isset($_POST["first_name"])&&
             
             $success = mysqli_stmt_execute($statement);
             
+            
+            
+
+
+
             if($success){
                 header("location: ../home/home.php?notification=true&success=true&message=Added patient and assigned to therapist sucessfully"); 
             }

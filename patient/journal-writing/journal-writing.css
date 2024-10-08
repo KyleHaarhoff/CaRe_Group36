@@ -25,7 +25,15 @@ body {
     display: flex;
     flex-direction: column;
 }
+#images{
+    padding: 0.3rem;
+    text-align: center;
+}
 
+#images image{
+    max-height: 20vh;
+    max-width: 20vw;
+}
 
 .journal-info {
     display: flex;
