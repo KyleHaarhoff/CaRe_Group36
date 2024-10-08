@@ -177,3 +177,8 @@ VALUES
 (3, 4, '2024-09-15', 'Up to date', 'Yes', '2024-09-16'),
 (2, 4, '2024-09-10', 'Unread', 'No', '2024-09-12');
 
+INSERT INTO journal_entries (patient_id, journal_entry, journal_date, mood)
+VALUES 
+(1, 'Feeling great today!', '2024-10-05', 'happy'),
+(1, 'Not a great day', '2024-10-06', 'sad'),
+(2, 'Good workout session!', '2024-10-05', 'neutral');
