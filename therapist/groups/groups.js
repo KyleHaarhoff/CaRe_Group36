@@ -12,6 +12,19 @@ function clearPopup() {
     document.getElementById("groupIdForUpdate").innerHTML = "";
 }
 
+
+message = new URLSearchParams(window.location.search).get('message');
+if(message != null) {
+
+    success = new URLSearchParams(window.location.search).get('success');
+    if(success == "true"){
+        openNotification(message, 3000, "0 0 10px rgba(0, 160, 0, 0.6)")
+    }
+    else{
+        openNotification(message, 3000, "0 0 10px rgba(160,0 , 0, 0.8)")
+    }
+}
+
 function populateAllPatients(ids) {
     const data = {
         action: 'all_members',
@@ -234,6 +247,8 @@ function confirmSave() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    window.location.replace("groups.php?success=true&message=Successfully saved!");
+
                     openNotification("Successfully saved!", 3000, "0 0 10px rgba(0, 160, 0, 0.6)", true);
                     //openNotification({ message: "Successfully saved!", timeout: 3000, shouldReload: true});
                 } else {
@@ -263,6 +278,8 @@ function confirmSave() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    
+                    window.location.replace("groups.php?success=true&message=Successfully saved!");
                     openNotification("Successfully saved!", 3000, "0 0 10px rgba(0, 160, 0, 0.6)", true)
                 } else {
                     alert('Error saving group: ' + data.message);
