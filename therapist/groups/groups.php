@@ -39,10 +39,6 @@ if ($result->num_rows > 0) {
 
 
 
-// Close the connection
-$conn->close();
-ob_end_flush();
-
 ?>
 
 <!DOCTYPE html>
@@ -143,3 +139,11 @@ ob_end_flush();
     <script src="<?= $base_url ?>/therapist/groups/groups.js"></script>
 </body>
 </html>
+
+<?php
+
+
+// Close the connection
+$conn->close();
+ob_end_flush();
+?>
