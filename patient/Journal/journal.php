@@ -24,7 +24,7 @@
                 
                 <label for="mood">Mood:</label>
                 <select id="mood" name="mood">
-                    <option value="happy">&#128522; Happy</option>
+                    <option value="happy" selected>&#128522; Happy</option>
                     <option value="neutral">&#128528; Neutral</option>
                     <option value="sad">&#128546; Sad</option>
                     <option value="angry">&#128545; Angry</option>
@@ -44,7 +44,7 @@
             <textarea id="journal-entry" name="journal-entry" rows="5" placeholder="Insert journal here..."></textarea>
             <div class="file-upload">
                 <label for="file-upload">Upload Files;</label>
-                <input type="file" id="file-upload" name ="files" multiple>
+                <input type="file" id="file-upload" name ="files[]" multiple accept="image/*">
 </div>
 
             <div class="buttons">

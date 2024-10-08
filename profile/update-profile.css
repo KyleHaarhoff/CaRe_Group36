@@ -1,14 +1,14 @@
 .profile{
     background-color: white;
     position: absolute;
-    width: 30vw;
-    height: 40vh;
+    width: 40vw;
+    height: 50vh;
     left: 50%;
-    margin-left: -15vw;
+    margin-left: -20vw;
     top: 50%;
-    margin-top: -20vh;
+    margin-top: -25vh;
     text-align: center;
-
+    padding-top: 3rem;
 }
 
 .profile-img {
@@ -29,4 +29,13 @@
 
 .fileUpload:hover{
     background-color: #0056b3;
+}
+
+.password{
+    padding: 0.4rem;
+    width: 15vw;
+}
+
+.password-container{
+    margin-top: 2rem;
 }

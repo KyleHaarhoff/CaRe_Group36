@@ -77,21 +77,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>08/08/2024</td>
-                                    <td>This is the start of a journal entry. It will cut off after...</td>
-                                    <td>&#128512;</td>
-                                </tr>
-                                <tr>
-                                    <td>07/08/2024</td>
-                                    <td>This is the start of a journal entry. It will cut off after...</td>
-                                    <td>&#128512;</td>
-                                </tr>
-                                <tr>
-                                    <td>06/08/2024</td>
-                                    <td>This is the start of a journal entry. It will cut off after...</td>
-                                    <td>&#128512;</td>
-                                </tr>
+                            <?php
+                                $sql= "SELECT * FROM journal_entries
+                                LEFT JOIN patient_therapist on patient_therapist.patient_id = journal_entries.patient_id
+                                WHERE patient_therapist.therapist_id = ? and patient_therapist.patient_id = ? ORDER BY journal_date DESC 
+                                
+                                
+                                LIMIT 3;";
+                                if ($stmt = mysqli_prepare($conn, $sql)) {
+                                    mysqli_stmt_bind_param($stmt, 'ii', $_SESSION['id'], $patient['patient_id']);
+            
+                                    mysqli_stmt_execute($stmt);
+            
+                                    if($result = mysqli_stmt_get_result($stmt)) {
+                                        if(mysqli_num_rows($result)> 0) {
+                                            while($row=mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?= $row['journal_date'] ?></td>
+                                                    <td><?php
+                                                    if (mb_strlen($row['journal_entry']) > 55) {
+                                                        echo mb_substr($row['journal_entry'], 0, 55) . '...';
+                                                    } else {
+                                                        echo $row['journal_entry'];
+                                                    }
+                                                    ?></td>
+                                                    <td><?= $moods[$row['mood']] ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }
+                                    }
+                                }
+                            ?>
                             </tbody>
                         </table>
                     </div>

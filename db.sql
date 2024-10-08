@@ -28,6 +28,11 @@ CREATE TABLE Users(
 	
 ) AUTO_INCREMENT = 1;
 
+CREATE TABLE Affirmations(
+    patient_id int PRIMARY KEY,
+    affirmation VARCHAR(255) DEFAULT "You can do it!",
+    FOREIGN KEY (patient_id) REFERENCES Users(id)
+);
 -- admin user in case
 CREATE user IF NOT EXISTS dbadmin@localhost;
 GRANT all privileges ON CareGroup36.* TO dbadmin@localhost;
@@ -40,11 +45,11 @@ INSERT INTO UserType(type) VALUES('Professional');
 INSERT INTO UserType(type) VALUES('Auditor');
 
 INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Jack', 'Ross', 43, 'jackTheRosser@gmail.com', 'Male', '+6212341235', SHA1('password'), 1);
-
+INSERT INTO Affirmations(patient_id) VALUES (1);
 INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('David', 'Jones', 27, 'dv@gmail.com', 'Male', '+6212541234', SHA1('password'), 1);
-
+INSERT INTO Affirmations(patient_id) VALUES (2);
 INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Bobby', 'Max', 34, 'bm@gmail.com', 'Male', '+6262341234', SHA1('password'), 1);
-
+INSERT INTO Affirmations(patient_id) VALUES (3);
 INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Jessica', 'Caprio', 41, 'jessC@gmail.com', 'Female', '+6212661234', SHA1('password'), 2);
 
 INSERT INTO Users(first_name, last_name, age, email, gender, phone_number, password, user_type) VALUES('Thando', 'Zwane', 23, 'Thandz@gmail.com', 'Female', '+12331', SHA1('password'), 3);
@@ -152,9 +157,17 @@ CREATE TABLE journal_entries (
     meals_eaten INT,
     exercise BOOLEAN,
     journal_entry TEXT,
-    file_path VARCHAR(255),
     FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+CREATE TABLE journal_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    journal_id INT,
+    image_data BLOB,
+    FOREIGN KEY (journal_id) REFERENCES journal_entries(id) ON DELETE CASCADE
+
+);
+
 
 -- Arun
 
@@ -178,8 +191,8 @@ VALUES
 (3, 4, '2024-09-15', 'Up to date', 'Yes', '2024-09-16'),
 (2, 4, '2024-09-10', 'Unread', 'No', '2024-09-12');
 
-INSERT INTO journal_entries (patient_id, journal_entry, journal_date, mood)
+INSERT INTO journal_entries (patient_id, journal_entry, journal_date, mood, hours_slept, meals_eaten, exercise)
 VALUES 
-(1, 'Feeling great today!', '2024-10-05', 'happy'),
-(1, 'Not a great day', '2024-10-06', 'sad'),
-(2, 'Good workout session!', '2024-10-05', 'neutral');
+(1, 'Feeling great today!', '2024-10-05', 'happy', 12, 3, TRUE),
+(1, 'Not a great day', '2024-10-06', 'sad', 5, 3, TRUE),
+(2, 'Good workout session!', '2024-10-05', 'neutral', 7, 3, FALSE);
