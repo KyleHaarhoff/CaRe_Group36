@@ -139,6 +139,7 @@ ob_end_flush();
     </main>
     <?php include "../../common/confirmation/confirmation.php"; ?> 
     <?php include "../../common/notification/notification.php"; ?> 
+    <?php include "../../common/warnings/warning.php"; ?> 
     <script src="<?= $base_url ?>/therapist/groups/groups.js"></script>
 </body>
 </html>

@@ -203,7 +203,7 @@ function confirmSave() {
     const groupId = document.getElementById("groupIdForUpdate").innerHTML;
 
     if (!groupName) {
-        openConfirmation("Group name is required.", showNotification, () => { });
+        openWarnings("Group name is required.", showNotification, () => { });
         return;
     }
 
@@ -212,7 +212,7 @@ function confirmSave() {
 
     // Check if any patients are selected
     if (selectedPatients.length === 0) {
-        openConfirmation("At least one patient must be in the group.", showNotification, () => { });
+        openWarnings("At least one patient must be in the group.", showNotification, () => { });
         return;
     }
 
@@ -234,17 +234,8 @@ function confirmSave() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    openNotification("Successfully saved!", 3000)
-                    // Clear input and reset selections
-                    //groupTitleInput.value = '';
-                    // selectedPatients.forEach(patientId => {
-                    //     const patient = groupPatientList.querySelector(`[data-id="${patientId}"]`);
-                    //     if (patient) {
-                    //         groupPatientList.removeChild(patient);
-                    //         allPatientList.appendChild(patient); // Move back to all patients
-                    //     }
-                    // });
-                    // updateCounts(); // Update the counts after saving
+                    openNotification("Successfully saved!", 3000, "0 0 10px rgba(0, 160, 0, 0.6)", true);
+                    //openNotification({ message: "Successfully saved!", timeout: 3000, shouldReload: true});
                 } else {
                     alert('Error saving group: ' + data.message);
                 }
@@ -272,17 +263,7 @@ function confirmSave() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    openNotification("Successfully saved!", 3000)
-                    // Clear input and reset selections
-                    //groupTitleInput.value = '';
-                    // selectedPatients.forEach(patientId => {
-                    //     const patient = groupPatientList.querySelector(`[data-id="${patientId}"]`);
-                    //     if (patient) {
-                    //         groupPatientList.removeChild(patient);
-                    //         allPatientList.appendChild(patient); // Move back to all patients
-                    //     }
-                    // });
-                    // updateCounts(); // Update the counts after saving
+                    openNotification("Successfully saved!", 3000, "0 0 10px rgba(0, 160, 0, 0.6)", true)
                 } else {
                     alert('Error saving group: ' + data.message);
                 }
