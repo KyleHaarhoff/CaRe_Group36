@@ -64,3 +64,14 @@ tbody tr:nth-child(odd) {
         font-weight: bold;
     }
 }
+
+
+.session td{
+    background-color: rgba(123, 156, 239, 0.2);
+    padding-left: 3rem;
+}
+
+.case td{
+    background-color: rgb(128 239 123 / 20%);
+    padding-left: 2rem;
+}

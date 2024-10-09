@@ -143,7 +143,7 @@
                             </tr>
                             <?php
 
-                            $sql= "SELECT * FROM sessions where p_id = ? and id = ? ORDER BY session_date DESC;";
+                            $sql= "SELECT * FROM sessions where patient_id = ? and therapist_id = ? ORDER BY session_date DESC;";
                             if ($stmt = mysqli_prepare($conn, $sql)) {
                                 mysqli_stmt_bind_param($stmt, 'ii', $patient_id,$_SESSION['id']);
         

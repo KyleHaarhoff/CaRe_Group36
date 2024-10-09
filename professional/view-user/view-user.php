@@ -79,7 +79,7 @@
                 <label for="age"><div>Age</div> <input type="number" name="age" required autocomplete="off" min="1"  value="<?= $user_info['age'] ?>"></label>
                 
                 <label for="gender"><div>Gender</div> <input type="text" name="gender" autocomplete="off"  value="<?= $user_info['gender'] ?>"></label>
-                <input type="hidden" value="<?= $user_info['user_type'] ?>" name="user_id">
+                <input type="hidden" value="<?=  $user_id ?>" name="user_id">
                 <div class="therapist-select-container <?php
                 if($user_info['user_type'] != 1){
                     echo "hidden";

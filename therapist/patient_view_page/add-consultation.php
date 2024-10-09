@@ -19,7 +19,7 @@ include_once "../../conf.php";
 
 
     #create the query
-    $sql = "INSERT INTO Sessions (p_id, id, session_length, session_date)
+    $sql = "INSERT INTO Sessions (patient_id, therapist_id, session_length, session_date)
             VALUES 
             (?,?,?, '".date("Y-m-d")."')" ;
     $statement =  mysqli_stmt_init($conn);

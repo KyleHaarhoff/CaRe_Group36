@@ -93,15 +93,6 @@ CREATE TABLE Sessions (
     FOREIGN KEY (patient_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
-
-
-CREATE TABLE Cases (
-    case_id INT AUTO_INCREMENT PRIMARY KEY,
-    therapist_id INT,
-    case_type VARCHAR(100),
-    FOREIGN KEY (therapist_id) REFERENCES Users(id)
-);
-
 INSERT INTO Sessions (patient_id, therapist_id, session_length, session_date)
 VALUES 
 (1, 4, 60, '2024-09-15'),
@@ -109,20 +100,10 @@ VALUES
 (1, 4, 60, '2024-09-19'),
 (2, 4, 45, '2024-09-26');
 
-INSERT INTO Cases (therapist_id, case_type)
-VALUES 
-(1, 'Therapeutic Consultation'),
-(2, 'Depression Therapy');
-
 
 
 
 -- Tharushi
-
-INSERT INTO Cases (id, case_type)
-VALUES 
-(1, 'Therapeutic Consultation'),
-(2, 'Depression Therapy');
 
 
 CREATE TABLE groups(
@@ -185,11 +166,11 @@ CREATE TABLE patient_therapist (
     FOREIGN KEY (therapist_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
-INSERT INTO patient_therapist (patient_id, therapist_id, assigned_on, journal_status, requires_followup, created_on)
+INSERT INTO patient_therapist (patient_id, therapist_id, assigned_on, journal_status, requires_followup, created_on, case_type)
 VALUES
-(1, 4, '2024-08-01', 'Unread', 'No', '2024-08-02'),
-(3, 4, '2024-09-15', 'Up to date', 'Yes', '2024-09-16'),
-(2, 4, '2024-09-10', 'Unread', 'No', '2024-09-12');
+(1, 4, '2024-08-01', 'Unread', 'No', '2024-08-02', 'Depression'),
+(3, 4, '2024-09-15', 'Up to date', 'Yes', '2024-09-16', 'Anxiety'),
+(2, 4, '2024-09-10', 'Unread', 'No', '2024-09-12', 'Undetermined');
 
 INSERT INTO journal_entries (patient_id, journal_entry, journal_date, mood, hours_slept, meals_eaten, exercise)
 VALUES 

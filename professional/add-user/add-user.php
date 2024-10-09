@@ -63,9 +63,9 @@
                         <option value="4">Auditor</option>
                     </select>
                 </div>
-                <div class="therapist-select-container">
+                <div class="therapist-select-container" id = "therapist_select_container">
+                <label for="therapist"><div>therapist</div>
                     <select name="therapist" id="therapist_select">
-                        <option value="" selected disabled>Therapist</option>
                         <?php
                         $sql= "SELECT * FROM Users where user_type = 2;";
                         if ($stmt = mysqli_prepare($conn, $sql)) {
@@ -85,6 +85,7 @@
                         ?>
                         
                     </select>
+                    </label>
                 </div>
                 <div>
                     <textarea placeholder="Initial notes..." name="notes" id="notes_input"></textarea>

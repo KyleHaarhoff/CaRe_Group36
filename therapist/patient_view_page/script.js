@@ -1,4 +1,15 @@
+//
+message = new URLSearchParams(window.location.search).get('message');
+if(message != null) {
 
+    success = new URLSearchParams(window.location.search).get('success');
+    if(success == "true"){
+        openNotification(message, 3000, "0 0 10px rgba(0, 160, 0, 0.6)")
+    }
+    else{
+        openNotification(message, 3000, "0 0 10px rgba(160,0 , 0, 0.8)")
+    }
+}
 
 function saveInfo(){
         form = document.createElement('form');
