@@ -14,7 +14,7 @@
 <div class="container shadow rounded">
     <div class="journal-form">
         <h2>Patient Journal</h2>
-        <form class="classform">
+        <form class="classform" action="submit_journal.php" method="POST" enctype="multipart/form-data">
             <div class="journal-info">
                 <label for="journal-date">Date:</label>
                 <input type="date" id="journal-date" name="journal-date">
@@ -24,7 +24,7 @@
                 
                 <label for="mood">Mood:</label>
                 <select id="mood" name="mood">
-                    <option value="happy">&#128522; Happy</option>
+                    <option value="happy" selected>&#128522; Happy</option>
                     <option value="neutral">&#128528; Neutral</option>
                     <option value="sad">&#128546; Sad</option>
                     <option value="angry">&#128545; Angry</option>
@@ -44,7 +44,7 @@
             <textarea id="journal-entry" name="journal-entry" rows="5" placeholder="Insert journal here..."></textarea>
             <div class="file-upload">
                 <label for="file-upload">Upload Files;</label>
-                <input type="file" id="file-upload" name ="files" multiple>
+                <input type="file" id="file-upload" name ="files[]" multiple accept="image/*">
 </div>
 
             <div class="buttons">

@@ -12,6 +12,15 @@ body {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+#images{
+    padding: 0.3rem;
+    text-align: center;
+}
+
+#images image{
+    max-height: 20vh;
+    max-width: 20vw;
+}
 
 .journal-form {
     margin-top: -20px;

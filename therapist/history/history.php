@@ -1,3 +1,20 @@
+<?php
+    #Access control
+    session_start();
+    // Check if the user is logged in
+    if (!isset($_SESSION['id'])) {
+        header("Location: ../../index.php");
+        exit();
+    }
+    //check if the user is allowed to view this page
+    if ($_SESSION['user_type'] != 2) {
+        http_response_code(403);
+        echo "<h1>403 Forbidden</h1>";
+        echo "<p>You are not authorized to access this page.</p>";
+
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,51 +41,41 @@
                 </tr>
             </thead>
             <tbody>
-                <tr onclick="journalRedirect()">
-                    <td>01/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128522;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>02/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128528;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>03/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128546;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>04/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128545;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>01/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128528;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>02/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128528;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>03/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128528;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>04/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128528;</td>
-                </tr>
-                <tr onclick="journalRedirect()">
-                    <td>01/09/2024</td>
-                    <td>This is the notes of journal entry. How you goin!</td>
-                    <td>&#128545;</td>
-                </tr>
+                <?php
+
+                // Prepare the SQL statement with a placeholder
+                $sql = "SELECT id,journal_date, journal_entry, mood FROM journal_entries WHERE patient_id = ? ORDER BY journal_date DESC";
+
+                // Create a prepared statement
+                $stmt = $conn->prepare($sql);
+
+                // Bind the dynamic patient_id value (e.g., 1 for now, change it dynamically later)
+                $patient_id = 1;
+                $stmt->bind_param("i", $patient_id); // "i" stands for integer
+
+                // Execute the statement
+                $stmt->execute();
+
+                // Fetch the result
+                $result = $stmt->get_result();
+
+                // Display fetched data in the table
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr onclick=\"journalRedirect(".$row['id'].")\">";
+                    echo "<td>" . date("d/m/Y", strtotime($row['journal_date'])) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['journal_entry']) . "</td>";
+
+                    // Display mood as emoji
+                    echo "<td>" .$moods[$row['mood']]. "</td>";
+                    
+                    echo "</tr>";
+                }
+
+                // Close the statement and connection
+                $stmt->close();
+                $conn->close();
+                ?>
+
 
 
             </tbody>

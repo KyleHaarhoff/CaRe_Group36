@@ -1,7 +1,16 @@
 
 # Please note
 The project is intended to be run with XAMPP from with the following file path htdocs/www/[project root folder]/     <br>
-**If any changes to this are made, update the $base_url variable in the conf.php file with the correct route to the project root folder**
+**If any changes to this are made, update the $base_url variable in the conf.php file with the correct route to the project root folder**<br>
+For the test users use the following:<br>
+patient:<br>
+email: jackTheRosser@gmail.com  - password: password <br>
+therapist:<br>
+email: jessC@gmail.com  - password: password <br>
+professional staff:<br>
+email: Thandz@gmail.com -  password: password <br>
+auditor:<br>
+email: sa@gmail.com -  password: password <br>
 <br>
 <br>
 # Git Commands for team members

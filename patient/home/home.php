@@ -1,5 +1,19 @@
 <?php
+#Access control
+session_start();
+// Check if the user is logged in
+if (!isset($_SESSION['id'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+//check if the user is allowed to view this page
+if ($_SESSION['user_type'] != 1) {
+    http_response_code(403);
+    echo "<h1>403 Forbidden</h1>";
+    echo "<p>You are not authorized to access this page.</p>";
 
+    exit();
+}
 include_once __DIR__ . "/../../conf.php"
 ?>
 
@@ -24,7 +38,21 @@ include_once __DIR__ . "/../../conf.php"
         <div class="container">
             <!-- Affirmation Section -->
             <section class="affirmation">
-                <h2 id="affirmation">This is a daily affirmation for the patient</h2>
+                <h2 id="affirmation"><?php
+                                $sql= "SELECT * FROM Affirmations  where patient_id = ?;";
+                                if ($stmt = mysqli_prepare($conn, $sql)) {
+                                    mysqli_stmt_bind_param($stmt, 'i', $_SESSION['id']);
+            
+                                    mysqli_stmt_execute($stmt);
+            
+                                    if($result = mysqli_stmt_get_result($stmt)) {
+                                        if(mysqli_num_rows($result)> 0) {
+                                            $row=mysqli_fetch_assoc($result);
+                                            echo $row['affirmation'];
+                                        }
+                                    }
+                                }
+                            ?></h2>
                 <button class="careButton" id="editButton">
                     <img id="editImage" src="../images/edit.png" alt="Edit">
                 </button>
@@ -33,10 +61,24 @@ include_once __DIR__ . "/../../conf.php"
             <!-- Weekly Goals Section -->
             <section class="weekly-goals">
                 <h3>Weekly Goals</h3>
-                <ul>
-                    <li>This is an example of a weekly goal for the patient</li>
-                    <li>Here is another goal</li>
-                    <li>One more</li>
+                <ul class="goal-list">
+                <?php 
+
+                    $sql= "SELECT * FROM Goals  where user_id = ? and is_completed = 0;";
+                    if ($stmt = mysqli_prepare($conn, $sql)) {
+                        mysqli_stmt_bind_param($stmt, 'i', $_SESSION['id']);
+
+                        mysqli_stmt_execute($stmt);
+
+                        if($result = mysqli_stmt_get_result($stmt)) {
+                            if(mysqli_num_rows($result)> 0) {
+                                while($row=mysqli_fetch_assoc($result)) {
+                                    echo "<li>" .$row["goal_text"]. "</li>";
+                                }
+                            }
+                        }
+                    }
+                ?>
                 </ul>
                 <button class="careButton-editGoals" data-target="../goals/goals.php">Edit Goals</button>
             </section>
@@ -66,21 +108,34 @@ include_once __DIR__ . "/../../conf.php"
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>08/08/2024</td>
-                                <td>This is the start of a journal entry. It will cut off after...</td>
-                                <td>&#128512</td>
-                            </tr>
-                            <tr>
-                                <td>07/08/2024</td>
-                                <td>This is the start of a journal entry. It will cut off after...</td>
-                                <td>&#128512</td>
-                            </tr>
-                            <tr>
-                                <td>06/08/2024</td>
-                                <td>This is the start of a journal entry. It will cut off after...</td>
-                                <td>&#128512</td>
-                            </tr>
+                            <?php
+                                $sql= "SELECT * FROM journal_entries  where patient_id = ? ORDER BY journal_date DESC LIMIT 4;";
+                                if ($stmt = mysqli_prepare($conn, $sql)) {
+                                    mysqli_stmt_bind_param($stmt, 'i', $_SESSION['id']);
+            
+                                    mysqli_stmt_execute($stmt);
+            
+                                    if($result = mysqli_stmt_get_result($stmt)) {
+                                        if(mysqli_num_rows($result)> 0) {
+                                            while($row=mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?= $row['journal_date'] ?></td>
+                                                    <td><?php
+                                                    if (mb_strlen($row['journal_entry']) > 55) {
+                                                        echo mb_substr($row['journal_entry'], 0, 55) . '...';
+                                                    } else {
+                                                        echo $row['journal_entry'];
+                                                    }
+                                                    ?></td>
+                                                    <td><?= $moods[$row['mood']] ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }
+                                    }
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -88,6 +143,8 @@ include_once __DIR__ . "/../../conf.php"
             </section>
         </div>
     </main>
+    <?php include "../../common/confirmation/confirmation.php"; ?> 
+    <?php include "../../common/notification/notification.php"; ?> 
     <script src="home.js"></script>
 </body>
 

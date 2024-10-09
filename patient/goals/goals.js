@@ -2,6 +2,23 @@ showHidden = false
 toggleHiddenButton = document.getElementById("toggleHiddenButton")
 goalsTable = document.getElementById("goalsTable")
 
+//check for any notifications to display
+
+notification = new URLSearchParams(window.location.search).get('notification');
+if(notification != null) {
+
+    message = new URLSearchParams(window.location.search).get('message');
+    success = new URLSearchParams(window.location.search).get('success');
+    if(success == "true"){
+        openNotification(message, 3000, "0 0 10px rgba(0, 160, 0, 0.6)")
+    }
+    else{
+        openNotification(message, 3000, "0 0 10px rgba(160,0 , 0, 0.8)")
+    }
+}
+
+
+
 function makeEditable(inputElement){
     //get row
     row = inputElement.closest('tr');
@@ -26,36 +43,78 @@ function makeEditable(inputElement){
 function saveGoal(inputElement){
     //get row
     row = inputElement.closest('tr');
-    //check if complete is checked and add hidden as needed
-    goalCheckbox = row.querySelectorAll('.goalCheckbox')[0];
-    if (goalCheckbox.checked){
-        if (showHidden)
-            row.style.display = 'table-row'; 
-        row.classList.add("hidden");
-    }
-    else{
-        if (row.classList.contains("hidden"))
-            row.classList.remove("hidden");
-    }
-    
-    //make text non editable
-    goalTitle = row.querySelectorAll('.goalTitle')[0];
-    goalTitle.setAttribute('readonly', true);
-    goalTitle.classList.remove("editing")
+    //Create a form to mimic the submision proccess
+    var form = document.createElement('form');
+    form.method = 'POST';  
+    form.action = "goals_backend.php";  
 
-    //change the save button to edit
-    saveButton = row.querySelectorAll('.tableButton')[0]
+    //Check if we are adding or updating
+    if (row.hasAttribute('data-id')) {
+        //we are updating
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "type";
+        input.value = "update";
+        form.appendChild(input);
+        
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "goal_id";
+        input.value = row.getAttribute('data-id');
+        form.appendChild(input);
+        
+        //check if complete is checked
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "is_completed";
+        goalCheckbox = row.querySelectorAll('.goalCheckbox')[0];
+        if (goalCheckbox.checked){
+            input.value = 1
+        }
+        else{
+            input.value = 0
+        }
+        form.appendChild(input);
 
-    //create new button 
-    editButton = document.createElement('button');
-    editButton.className = 'tableButton';
-    editButton.textContent = 'Edit';
-    editButton.addEventListener("click",() =>{
-        makeEditable(editButton); 
-    })
-    saveButton.parentNode.replaceChild(editButton, saveButton);
-    saveButton.remove()
-    openNotification("Saved!", 3000)
+        
+        goalTitle = row.querySelectorAll('.goalTitle')[0]
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "goal_text";
+        input.value = goalTitle.value;
+        form.appendChild(input);
+
+    } else {
+        //we are adding a new goal
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "type";
+        input.value = "add";
+        form.appendChild(input);
+        
+        //check if complete is checked
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "is_completed";
+        goalCheckbox = row.querySelectorAll('.goalCheckbox')[0];
+        if (goalCheckbox.checked){
+            input.value = 1
+        }
+        else{
+            input.value = 0
+        }
+        form.appendChild(input);
+        
+        goalTitle = row.querySelectorAll('.goalTitle')[0]
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "goal_text";
+        input.value = goalTitle.value;
+        form.appendChild(input);
+    }
+    //Append the form to the body and submit it
+    document.body.appendChild(form);
+    form.submit();
 }
 
 function toggleHidden(){
@@ -94,9 +153,26 @@ function addGoal(){
 
 function confirmRemoveGoal(inputElement){
     openConfirmation("Are you sure you want to delete the goal?", ()=>{
-        //get row
         row = inputElement.closest('tr');
-        row.remove()
-        openNotification("Successfully deleted!", 3000)
+        form = document.createElement('form');
+        form.method = 'POST';  
+        form.action = "goals_backend.php";  
+        
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "type";
+        input.value = "delete";
+        form.appendChild(input);
+        
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "goal_id";
+        input.value = row.getAttribute('data-id');
+        form.appendChild(input);
+
+        //Append the form to the body and submit it
+        document.body.appendChild(form);
+        form.submit();
     }, ()=>{})
 }
+

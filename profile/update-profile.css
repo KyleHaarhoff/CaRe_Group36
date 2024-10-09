@@ -1,0 +1,41 @@
+.profile{
+    background-color: white;
+    position: absolute;
+    width: 40vw;
+    height: 50vh;
+    left: 50%;
+    margin-left: -20vw;
+    top: 50%;
+    margin-top: -25vh;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.fileUpload{
+    background-color: #333;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fileUpload:hover{
+    background-color: #0056b3;
+}
+
+.password{
+    padding: 0.4rem;
+    width: 15vw;
+}
+
+.password-container{
+    margin-top: 2rem;
+}
